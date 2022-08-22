@@ -27,8 +27,8 @@ function Sidebar({ show, handleShow }: Props) {
           </li>
         </ul>
       </div>
-      <div className='text-end m-5'>
-        <button className='btn-primary w-full p-4 max-w-[400px]' onClick={handleShow}>
+      <div className='text-end m-5 absolute bottom-0 left-0 right-0'>
+        <button className='btn-primary w-full p-4' onClick={handleShow}>
           Хаах
         </button>
       </div>

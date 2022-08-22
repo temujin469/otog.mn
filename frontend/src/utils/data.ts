@@ -9,10 +9,10 @@ type Bg = {
 }
 
 export const bg_images:Bg= {
-  back1:"https://images.pexels.com/photos/998646/pexels-photo-998646.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  back1:"https://images.pexels.com/photos/163848/road-mountains-sunset-path-163848.jpeg",
   back2:'https://t3.ftcdn.net/jpg/02/55/53/98/360_F_255539808_28UuJgM27FNYvQVHNguGyznEzgZKqWVj.jpg',
   back3:'https://images.squarespace-cdn.com/content/v1/53ac9e21e4b0a25fee7b9d40/1510365731627-JICWJO0JBKJTI3EC8352/mongolian_steppe.jpg?format=1500w',
-  back4:'https://images.squarespace-cdn.com/content/v1/53ac9e21e4b0a25fee7b9d40/1510365731627-JICWJO0JBKJTI3EC8352/mongolian_steppe.jpg?format=1500w',
+  back4:'https://images.pexels.com/photos/753312/pexels-photo-753312.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
   back5:'https://images.pexels.com/photos/147411/italy-mountains-dawn-daybreak-147411.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
 }
 

@@ -100,8 +100,8 @@ function Option({ handleOption, setOptions, options, setOpenOptions, openOptions
               </div>
             </div>
           </div>
-          <div className='md:hidden m-5'>
-            <button className='btn-primary w-full p-4' onClick={() => setOpenOptions(false)}>
+          <div className='md:hidden m-5 absolute bottom-0 left-0 right-0'>
+            <button className='btn-primary w-full p-4' onClick={()=>setOpenOptions(false)}>
               Хаах
             </button>
           </div>

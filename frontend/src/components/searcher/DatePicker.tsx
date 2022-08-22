@@ -34,7 +34,7 @@ function DatePicker({ date, setDate, openDate, setOpenDate }: Props) {
             className="md:rounded-xl overflow-hidden flex-[1]"
             minDate={new Date()}
           />
-          <div className='md:hidden m-5'>
+          <div className='md:hidden m-5 absolute bottom-0 left-0 right-0'>
             <button className='btn-primary w-full p-4' onClick={()=>setOpenDate(false)}>
               Хаах
             </button>
