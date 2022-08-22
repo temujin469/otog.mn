@@ -1,4 +1,3 @@
-import { Skeleton } from 'antd'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -6,7 +5,7 @@ import { useAppSelector } from '../hooks'
 
 function HotelRegion() {
 
-  const { regions, loading, error } = useAppSelector(state => state.hotelRegion)
+  const { regions, loading } = useAppSelector(state => state.hotelRegion)
 
   return (
     <div className='container mb-10'>
