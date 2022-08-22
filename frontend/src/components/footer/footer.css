@@ -1,0 +1,4 @@
+
+  .footer-link {
+    @apply text-gray hover:text-primary;
+  }

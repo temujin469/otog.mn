@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+@layer components {
+  .btn-border {
+    @apply border-2 border-primary rounded-xl disabled:border-gray
+  }
+
+  .heading-xl {
+    @apply text-2xl md:text-3xl lg:text-4xl font-bold;
+  }
+  .heading-lg {
+    @apply text-xl md:text-2xl lg:text-3xl font-bold;
+  }
+
+  .heading-md {
+    @apply font-semibold text-xl md:text-xl lg:text-2xl;
+  }
+
+  .heading-sm {
+    @apply font-medium text-[15px] md:text-lg lg:text-xl xl:text-xl;
+  }
+
+  .scaleWrapper > img {
+    @apply transition-all duration-100 ease-in cursor-pointer
+  }
+
+  .scaleWrapper:hover > img {
+    @apply scale-125
+  }
+
+  .btn-primary {
+    @apply bg-primary px-4 py-2 text-white rounded-lg
+  }
+
+  .btn-primary>* {
+    @apply text-white hover:text-black
+  }
+  .section {
+    @apply p-2 rounded-lg min-h-[480px] flex flex-col justify-between mb-10
+  }
+}
+
+body a {
+  color:black;
+}
+
+body p {
+  margin: 0;
+}
+
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.rdrMonth {
+  width: 100% !important;
+}
