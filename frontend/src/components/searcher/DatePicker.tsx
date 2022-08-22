@@ -5,19 +5,25 @@ import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { MdDateRange } from 'react-icons/md';
 import { VscArrowBoth } from 'react-icons/vsc';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { setDate} from '../../redux/slices/searchSlice';
+
 
 type Props = {
   openDate: boolean
   setOpenDate: React.Dispatch<React.SetStateAction<boolean>>
-  date: any
-  setDate: React.Dispatch<React.SetStateAction<any>>
 }
 
-function DatePicker({ date, setDate, openDate, setOpenDate }: Props) {
+
+function DatePicker({openDate, setOpenDate }: Props) {
+  
+  const dispatch = useAppDispatch()
+  const {date} = useAppSelector(state=>state.search)
+
   return (
     <div className={openDate ? "block" : "hidden"}>
       <div className=''>
-        <div className='absolute md:shadow-md flex md:block flex-col md:rounded-xl top-0 left-0 w-full h-screen md:h-auto md:w-auto z-30 md:top-[75px] md:left-[50%] md:translate-x-[-50%] bg-white'>
+        <div className='absolute md:shadow-md flex md:block flex-col md:rounded-xl top-0 left-0 w-full md:h-auto h-full md:w-auto z-[1000] md:top-[75px] md:left-[50%] md:translate-x-[-50%] bg-white'>
           <div className='md:hidden bg-gray-light'>
             <div className='gap-2 shadow-sm bg-white rounded-xl flex items-center justify-center p-4 m-5'>
               <MdDateRange className='text-[25px] text-gray'/>
@@ -28,13 +34,15 @@ function DatePicker({ date, setDate, openDate, setOpenDate }: Props) {
           </div>
           <DateRange
             editableDateInputs={true}
-            onChange={(item) => setDate([item.selection])}
+            onChange={(item) =>dispatch(setDate([item.selection]))}
+            // onChange={(item) =>console.log(item)}
+
             moveRangeOnFirstSelection={false}
             ranges={date}
             className="md:rounded-xl overflow-hidden flex-[1]"
             minDate={new Date()}
           />
-          <div className='md:hidden m-5 absolute bottom-0 left-0 right-0'>
+          <div className='md:hidden m-5'>
             <button className='btn-primary w-full p-4' onClick={()=>setOpenDate(false)}>
               Хаах
             </button>

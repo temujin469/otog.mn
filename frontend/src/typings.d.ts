@@ -21,3 +21,9 @@ export type UserBody = {
 export type User = {
   name:string
 }
+
+export type Option = {
+  adult: number
+  children: number
+  room: number
+}

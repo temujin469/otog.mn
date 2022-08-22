@@ -9,7 +9,7 @@ function HotelRegion() {
 
   return (
     <div className='container mb-10'>
-      <div className='p-4 shadow-lg rounded-xl'>
+      <div className='p-4 shadow-lg rounded-xl border border-gray-light'>
         <h2 className='heading-md mt-4 mb-5'>Аялал, амралтын бүс нутгууд</h2>
         <div className='bg-white backdrop-blur-sm rounded-xl'>
           <Swiper

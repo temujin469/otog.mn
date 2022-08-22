@@ -1,9 +1,9 @@
-import Search from 'antd/lib/transfer/search'
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Home from '../pages/Home'
 import HotelScreen from '../pages/HotelScreen'
 import Profail from '../pages/Profail'
+import Search from '../pages/Search'
 import Signin from '../pages/Signin'
 import Signup from '../pages/SIgnup'
 
@@ -16,7 +16,7 @@ function Layout() {
         <Route path='/signup' element={<Signup/>} />
         <Route path='/profail/:id' element={<Profail/>} />
         <Route path='/hotel/:id' element={<HotelScreen/>} />
-        <Route path='/search/:id' element={<Search/>} />
+        <Route path='/search' element={<Search/>} />
       </Routes>
     </div>
 

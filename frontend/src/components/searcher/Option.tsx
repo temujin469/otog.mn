@@ -3,21 +3,21 @@ import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
 import { BsPerson } from 'react-icons/bs'
 import { FaRegUser } from 'react-icons/fa'
 import { MdChildCare, MdOutlineBedroomChild } from 'react-icons/md'
+import { useAppDispatch, useAppSelector } from '../../hooks'
+import { setOptionAdult, setOptionChildren, setOptionRoom } from '../../redux/slices/searchSlice'
 
 type Props = {
-  handleOption: (name: string, operation: "nemeh" | "hasah") => void
-  setOptions: React.Dispatch<any>
-  options: any
   openOptions: boolean
   setOpenOptions: React.Dispatch<boolean>
-  totalGuests: number
 }
 
-function Option({ handleOption, setOptions, options, setOpenOptions, openOptions, totalGuests }: Props) {
+function Option({setOpenOptions, openOptions }: Props) {
+  const dispatch = useAppDispatch()
+  const {totalGuests,option} = useAppSelector(state=>state.search)
   return (
     <>
       {openOptions && (
-        <div className='absolute z-50 md:shadow-md justify-between left-0 flex flex-col md:block top-0 bg-white md:top-[75px] w-full md:h-auto h-screen md:w-[300px] md:left-[50%] md:translate-x-[-50%] rounded-xl md:p-5'>
+        <div className='absolute z-50 md:shadow-md justify-between left-0 flex flex-col md:block top-0 bg-white md:top-[75px] w-full md:h-auto h-screen md:w-[300px] md:left-[50%] md:translate-x-[-50%] rounded-xl md:p-3'>
           <div className='w-full'>
             <div className='md:hidden bg-gray-light p-5'>
               <div className='gap-2 rounded-xl bg-white flex items-center p-4'>
@@ -33,18 +33,18 @@ function Option({ handleOption, setOptions, options, setOpenOptions, openOptions
                 </div>
                 <div className="optionCounter">
                   <button
-                    disabled={options.adult <= 1}
+                    disabled={option.adult <= 1}
                     className="btn-border p-2"
-                    onClick={() => handleOption("adult", "hasah")}
+                    onClick={() => dispatch(setOptionAdult("hasah"))}
                   >
                     <AiOutlineMinus />
                   </button>
                   <span className="text-lg font-medium p-2">
-                    {options.adult}
+                    {option.adult}
                   </span>
                   <button
                     className="btn-border p-2"
-                    onClick={() => handleOption("adult", "nemeh")}
+                    onClick={() => dispatch(setOptionAdult("nemeh"))}
                   >
                     <AiOutlinePlus />
                   </button>
@@ -57,18 +57,18 @@ function Option({ handleOption, setOptions, options, setOpenOptions, openOptions
                 </div>
                 <div className="optionCounter">
                   <button
-                    disabled={options.children <= 0}
+                    disabled={option.children <= 0}
                     className="btn-border p-2"
-                    onClick={() => handleOption("children", "hasah")}
+                    onClick={() => dispatch(setOptionChildren("hasah"))}
                   >
                     <AiOutlineMinus />
                   </button>
                   <span className="text-lg font-medium p-2">
-                    {options.children}
+                    {option.children}
                   </span>
                   <button
                     className="btn-border p-2"
-                    onClick={() => handleOption("children", "nemeh")}
+                    onClick={() =>dispatch(setOptionChildren("nemeh")) }
                   >
                     <AiOutlinePlus />
                   </button>
@@ -81,18 +81,18 @@ function Option({ handleOption, setOptions, options, setOpenOptions, openOptions
                 </div>
                 <div className="optionCounter">
                   <button
-                    disabled={options.room <= 1}
+                    disabled={option.room <= 1}
                     className="btn-border p-2"
-                    onClick={() => handleOption("room", "hasah")}
+                    onClick={() =>dispatch(setOptionRoom("hasah"))}
                   >
                     <AiOutlineMinus />
                   </button>
                   <span className="text-lg font-medium p-2">
-                    {options.room}
+                    {option.room}
                   </span>
                   <button
                     className="btn-border p-2"
-                    onClick={() => handleOption("room", "nemeh")}
+                    onClick={() =>dispatch(setOptionRoom("nemeh"))}
                   >
                     <AiOutlinePlus />
                   </button>

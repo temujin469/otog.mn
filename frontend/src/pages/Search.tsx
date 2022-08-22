@@ -1,8 +1,11 @@
 import React from 'react'
+import SearchHeader from '../components/searchHeader'
 
 function Search() {
   return (
-    <div>Search</div>
+    <div className='h-screen overflow-hidden'>
+      <SearchHeader/>
+    </div>
   )
 }
 

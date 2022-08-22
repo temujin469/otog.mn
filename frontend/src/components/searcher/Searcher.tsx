@@ -7,51 +7,24 @@ import { format } from "date-fns";
 
 import Option from './Option';
 import DatePicker from './DatePicker';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { setDestination } from '../../redux/slices/searchSlice';
 
 
-
-type Options = {
-  adult: number
-  children: number
-  room: number
-}
 
 function Searcher() {
 
-  const [destination, setDestination] = useState<string>("");
   const [openDate, setOpenDate] = useState(false);
-  const [date, setDate] = useState([
-    {
-      startDate: new Date(),
-      endDate: new Date(),
-      key: "selection",
-    },
-  ]);
-
-
   const [openOptions, setOpenOptions] = useState<boolean>(false);
 
-  const [options, setOptions] = useState<any>({
-    adult: 1,
-    children: 0,
-    room: 1,
-  });
+  const dispatch = useAppDispatch()
+  const {date,totalGuests,destination} = useAppSelector(state=>state.search)
 
-  let totalGuests = options.adult + options.children
 
   const navigate = useNavigate();
 
-  const handleOption = (name: string, operation: "nemeh" | "hasah") => {
-    setOptions((prev: Options) => {
-      return {
-        ...prev,
-        [name]: operation === "nemeh" ? options[name] + 1 : options[name] - 1,
-      };
-    });
-  };
-
   const handleSearch = () => {
-    navigate("/hotels", { state: { destination, date, options } });
+    navigate("/search", { state: { destination, date } });
   };
 
   return (
@@ -60,24 +33,24 @@ function Searcher() {
         <div className='p-1 border-gray-light md:flex-[1] h-[69px]'>
           <div className='hover:bg-gray-light h-full rounded-xl flex items-center gap-2 p-3'>
             <BsSearch className='text-[20px] text-gray' />
-            <input placeholder='Хайх газрын нэрээ оруулна уу?' className='outline-none font-medium w-full h-full place bg-transparent' onChange={(e) => setDestination(e.target.value)} value={destination} />
+            <input placeholder='Хайх газрын нэрээ оруулна уу?' className='outline-none font-medium w-full h-full place bg-transparent' onChange={(e) =>dispatch(setDestination(e.target.value)) } value={destination} />
           </div>
         </div>
         <div className='p-1 border-gray-light md:relative md:flex-[1] h-[69px]'>
-          <div className='hover:bg-gray-light h-full gap-2  rounded-xl flex items-center p-3'>
+          <div className='hover:bg-gray-light h-full gap-2  rounded-xl flex items-center p-3' onClick={() => setOpenDate(!openDate)}>
             <MdDateRange className='text-[20px] text-gray' />
-            <p className='font-medium flex items-center gap-2' onClick={() => setOpenDate(!openDate)}>
+            <p className='font-medium flex items-center gap-2'>
               {`${format(date[0].startDate, "MM/dd/yyyy")}`} <VscArrowBoth />{` ${format(date[0].endDate, "MM/dd/yyyy")}`}
             </p>
-            <DatePicker setDate={setDate} date={date} openDate={openDate} setOpenDate={setOpenDate} />
           </div>
+          <DatePicker openDate={openDate} setOpenDate={setOpenDate} />
         </div>
         <div className='p-1 border-gray-light cursor-pointer h-[69px] md:relative'>
           <div className='hover:bg-gray-light h-full gap-2 rounded-xl flex items-center p-3' onClick={() => setOpenOptions(!openOptions)}>
             <BsPerson className='text-[20px] text-gray' />
             <p className='font-medium'>{`Хүний тоо ${totalGuests}`}</p>
           </div>
-          <Option handleOption={handleOption} setOptions={setOptions} options={options} openOptions={openOptions} setOpenOptions={setOpenOptions} totalGuests={totalGuests}/>
+          <Option openOptions={openOptions} setOpenOptions={setOpenOptions}/>
         </div>
         <div className='py-1 px-1 border-none h-[69px]'>
           <div className='hover:bg-gray-light h-full rounded-xl overflow-hidden'>
