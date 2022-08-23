@@ -1,0 +1,39 @@
+[
+  {
+    "username": "temuujin1",
+    "name": "Тэмүүжин",
+    "email": "ttemujin469@gmail.com",
+    "country": "Монгол",
+    "city": "Ulaanbaatar",
+    "phone": "99607953",
+    "password": "04320416",
+    "role": "ADMIN"
+  },
+  {
+    "username": "buynaa123",
+    "name": "Буянаа",
+    "email": "ttemujin460@gmail.com",
+    "country": "Монгол",
+    "city": "Ulaanbaatar",
+    "phone": "99607955",
+    "password": "88592275"
+  },
+  {
+    "username": "anuujin3",
+    "name": "Анужин",
+    "email": "ttemujin444@gmail.com",
+    "country": "Монгол",
+    "city": "Ulaanbaatar",
+    "phone": "99607953",
+    "password": "123456"
+  },
+  {
+    "username": "tuguldur50",
+    "name": "Төгөлдөр",
+    "email": "temvjin466@gmail.com",
+    "country": "Монгол",
+    "city": "Ulaanbaatar",
+    "phone": "99606166",
+    "password": "mongol123"
+  }
+]
