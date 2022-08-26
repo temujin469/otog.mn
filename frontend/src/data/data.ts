@@ -1,4 +1,5 @@
 import { faker } from '@faker-js/faker';
+import { Hotel } from '../typings';
 
 type Bg = {
   back1:string
@@ -25,41 +26,50 @@ export const natureImages  = (num:number)=>{
   return images;
 }
 
+export const cityImages = (num:number)=>{
+  let images:string[] = []
+  for (let i = 0; i < num; i++) {
+    images.push(faker.image.business(1234, 2345, true) )
+  };
+
+  return images;
+}
+
 export const hotelTypes = [
   {
     name:"Зочид буудал",
     image:faker.image.nature(undefined,undefined,true),
-    _id:"jsdafkjasdj;f",
+    id:"jsdafkjasdj;f",
   },
   {
     name:"Жуулчны бааз",
     image:faker.image.nature(undefined,undefined,true),
 
-    _id:"jsdafkghgfhhgf",
+    id:"jsdafkghgfhhgf",
   },
   {
     name:"Амралтын газар",
     image:faker.image.nature(undefined,undefined,true),
 
-    _id:"jhgfh",
+    id:"jhgfh",
   },
   {
     name:"Гэр буудал",
     image:faker.image.nature(undefined,undefined,true),
 
-    _id:"jsdafdsf",
+    id:"jsdafdsf",
   },
   {
     name:"Кемп",
     image:faker.image.nature(undefined,undefined,true),
 
-    _id:"jsdafhg",
+    id:"jsdafhg",
   },
   {
     name:"Зуслан",
     image:faker.image.nature(undefined,undefined,true),
 
-    _id:"jsdafhg",
+    id:"jsdafhg",
   },
 ]
 
@@ -67,43 +77,49 @@ export const amenities = [
   {
     name:"Тэжээвэр амьтан зөвшөөрөх",
     image:faker.image.nature(undefined,undefined,true),
-
-    _id:"23rwefsg"
+    icon:'FaDog',
+    id:"23rwefsg"
   },
   {
     name:"Усан сан",
     image:faker.image.nature(undefined,undefined,true),
+    icon:'FaWater',
 
-    _id:"23rw3re"
+    id:"23rw3re"
   },
   {
     name:"Интернэт",
     image:faker.image.nature(undefined,undefined,true),
+    icon:'FaWifi',
 
-    _id:"23rwsds6"
+    id:"23rwsds6"
   },
   {
     name:"Гал тогоо",
     image:faker.image.nature(undefined,undefined,true),
+    icon:'FaHotdog',
 
-    _id:"23rwgfdh"
+    id:"AiFillFire"
   },
   {
     name:"Агааржуулагч",
     image:faker.image.nature(undefined,undefined,true),
+    icon:'FaAirFreshener',
 
-    _id:"23r5656"
+    id:"23r5656"
   },
   {
     name:"Balcony",
     image:faker.image.nature(undefined,undefined,true),
-
-    _id:"23rfdgfd5"
+    icon:'MdBalcony',
+    id:"23rfdgfd5"
   },
   {
     name:"Машины зогсоол",
+    icon:'FaParking',
+
     image:faker.image.nature(undefined,undefined,true),
-    _id:"dfgfd0"
+    id:"dfgfd0"
   },
 ]
 
@@ -112,31 +128,31 @@ export const regions =[
     name:"Зүүн бүс",
     image:faker.image.nature(undefined,undefined,true),
 
-    _id:"23rwefsg1"
+    id:"23rwefsg1"
   },
   {
     name:"Баруун бүс",
     image:faker.image.nature(undefined,undefined,true),
 
-    _id:"23rw3re2"
+    id:"23rw3re2"
   },
   {
     name:"Говийн бүс",
     image:faker.image.nature(undefined,undefined,true),
 
-    _id:"23rwsds63"
+    id:"23rwsds63"
   },
   {
     name:"Төвийн бүс",
     image:faker.image.nature(undefined,undefined,true),
 
-    _id:"23rwsds64"
+    id:"23rwsds64"
   },
   {
     name:"Хангайн бүс",
     image:faker.image.nature(undefined,undefined,true),
 
-    _id:"23rwsds65"
+    id:"23rwsds65"
   },
 ]
 
@@ -145,31 +161,31 @@ export const blogs =[
     name:"Зүүн бүс",
     image:faker.image.nature(undefined,undefined,true),
 
-    _id:"23rwefsg1"
+    id:"23rwefsg1"
   },
   {
     name:"Баруун бүс",
     image:faker.image.nature(undefined,undefined,true),
 
-    _id:"23rw3re2"
+    id:"23rw3re2"
   },
   {
     name:"Говийн бүс",
     image:faker.image.nature(undefined,undefined,true),
 
-    _id:"23rwsds63"
+    id:"23rwsds63"
   },
   {
     name:"Төвийн бүс",
     image:faker.image.nature(undefined,undefined,true),
 
-    _id:"23rwsds64"
+    id:"23rwsds64"
   },
   {
     name:"Хангайн бүс",
     image:faker.image.nature(undefined,undefined,true),
 
-    _id:"23rwsds65"
+    id:"23rwsds65"
   },
 ]
 
@@ -184,17 +200,23 @@ export const blogs =[
 export const generateHotels = (num:number) => {
   let hotels =[]
   for (let i = 0; i < num; i++) {
-    const hotel = {
+    const hotel:Hotel = {
+      images:cityImages(10),
       name:faker.company.name(),
       bed_room:Math.floor(Math.random()* 9),
       bath_room:Math.floor(Math.random()* 9),
       hotelType:hotelTypes[Math.floor(Math.random()* hotelTypes.length)],
       county:faker.address.country(),
       amenities:amenities,
-      lacation:faker.address.nearbyGPSCoordinate(),
+      lacation:{
+        long:2,
+        lat:3
+      },
       region:regions[Math.floor(Math.random()* regions.length)],
       description:faker.lorem.paragraphs(5),
-      rating:Math.floor(Math.random()* 5)
+      rating:Math.floor(Math.random()* 5),
+      review:Math.floor(Math.random()* 100),
+      id:Math.random()
        // amenitie:{
       //   Pe_Allowed:true,
       //   Pool:true,
@@ -210,3 +232,7 @@ export const generateHotels = (num:number) => {
 
   return hotels;
 }
+
+
+
+

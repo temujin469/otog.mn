@@ -1,5 +1,5 @@
 import React, { CSSProperties } from 'react'
-import { bg_images } from '../utils/data'
+import { bg_images } from '../data/data'
 import Navbar from './header/Navbar';
 import Searcher from './searcher/Searcher';
 

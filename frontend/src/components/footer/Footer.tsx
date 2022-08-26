@@ -1,5 +1,5 @@
 import React from 'react'
-import { hotelTypes } from '../../utils/data'
+import { hotelTypes } from '../../data/data'
 import './footer.css'
 
 function Footer() {
@@ -139,8 +139,8 @@ function Footer() {
               </li>
               {
                 hotelTypes.map(type => (
-                  <li key={type._id}>
-                    <a href={`/search/${type._id}`} className="footer-link">{type.name}</a>
+                  <li key={type.id}>
+                    <a href={`/search/${type.id}`} className="footer-link">{type.name}</a>
                   </li>
                 ))
               }

@@ -1,6 +1,6 @@
 import { getHotelsFailure, getHotelsStart, getHotelsSuccess } from "../redux/slices/hotelSlice";
 import { AppDispatch } from "../redux/slices/store";
-import { generateHotels } from "../utils/data";
+import { generateHotels } from "../data/data";
 
 export const getHotels = async (dispatch: AppDispatch) => {
   dispatch(getHotelsStart());

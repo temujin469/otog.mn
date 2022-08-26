@@ -1,6 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { blogs } from '../utils/data'
+import { blogs } from '../data/data'
 
 
 function Blog() {
@@ -10,7 +9,7 @@ function Blog() {
       <div className='flex gap-4 flex-col md:flex-row pt-4 p-5 md:p-0'>
         {
           blogs.slice(0,3).map(blog => (
-            <div key={blog._id}>
+            <div key={blog.id}>
               <div>
                 <img src={blog.image} alt={blog.name} className="rounded-xl"/>
               </div>

@@ -50,11 +50,11 @@ function SliderViewer({ data }: Props) {
           >
             {
               data.sliderDates.map(data => (
-                <SwiperSlide key={data._id}>
+                <SwiperSlide key={data.id}>
                   <div className='relative rounded-xl overflow-hidden'>
                     {
                       data.image ? (
-                        <Link to={`/search/${data._id}`} className="scaleWrapper">
+                        <Link to={`/search/${data.id}`} className="scaleWrapper">
                           <img src={data.image} className="w-full" alt={data.title} />
                           <p className='absolute  text-white heading-sm bottom-2 left-2 lg:bottom-4 lg:left-4'>{data.title}</p>
                         </Link>

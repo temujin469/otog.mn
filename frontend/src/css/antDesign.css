@@ -1,0 +1,45 @@
+.rdrMonth {
+  width: 100% !important;
+}
+
+div .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  background-color: transparent !important;
+  border: none !important;
+  outline: none !important;
+}
+
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  outline: none !important;
+  border: none !important;
+}
+
+div .ant-select .ant-select-selector>.ant-select-selection-search >input.ant-select-selection-search-input{
+  outline: none !important;
+  border: none !important;
+}
+
+.anticon svg {
+  width: 15px !important;
+  height: 15px !important;
+}
+
+.ant-rate-star:not(:last-child) {
+  margin-right: 4px !important;
+}
+
+.ant-rate {
+  font-size: 10px;
+}
+
+.ant-tabs-nav-list .ant-tabs-tab + .ant-tabs-tab {
+  margin: 0 !important;
+}
+
+.ant-tabs-nav-list .ant-tabs-tab  {
+  @apply px-5 py-3 ml-0
+}
+
+.ant-tabs > div > .site-custom-tab-bar{
+  @apply z-10 bg-white
+}
+

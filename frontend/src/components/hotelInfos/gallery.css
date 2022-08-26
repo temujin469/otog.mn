@@ -1,0 +1,26 @@
+.image-gallery-content:not(.fullscreen)
+  .image-gallery-slide
+  .image-gallery-image {
+    @apply sm:rounded-xl h-[300px] bg-primary object-cover md:h-[500px] lg:h-[600px]
+}
+.image-gallery-thumbnail .image-gallery-thumbnail-image {
+  @apply rounded-lg h-[50px]  md:h-[60px]
+}
+
+.image-gallery-left-nav .image-gallery-svg {
+  @apply xl:h-[40px] xl:w-[40px] h-[30px] w-[30px] bg-black/20 rounded-full hover:text-primary text-gray;
+}
+
+.image-gallery-right-nav .image-gallery-svg {
+  @apply xl:h-[40px] xl:w-[40px] h-[30px] w-[30px] bg-black/20 rounded-full hover:text-primary text-gray;
+}
+.image-gallery-thumbnail.active, .image-gallery-thumbnail:focus {
+  @apply rounded-xl border-primary
+}
+.image-gallery-thumbnail+.image-gallery-thumbnail {
+  margin-left: 1px !important;
+}
+
+.image-gallery-thumbnail.image-gallery-thumbnail {
+  @apply rounded-xl hover:border-primary 
+}

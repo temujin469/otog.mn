@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "~react-image-gallery/styles/css/image-gallery.css";
 
 body {
   margin: 0;
@@ -15,6 +16,10 @@ body {
 @layer components {
   .btn-border {
     @apply border-2 border-primary rounded-xl disabled:border-gray
+  }
+
+  .optionCounter .btn-border {
+    @apply h-[33px] w-[33px]
   }
 
   .heading-xl {
@@ -40,8 +45,11 @@ body {
     @apply scale-125
   }
 
+  .tag {
+    @apply bg-gray-light rounded-[20px] px-4 py-[4px] hover:bg-slate-200 text-textClr flex items-center gap-2
+  }
   .btn-primary {
-    @apply bg-primary px-4 py-2 text-white rounded-lg
+    @apply bg-primary px-4 py-2 font-medium text-white rounded-xl flex items-center gap-2 hover:shadow-md text-center justify-center
   }
 
   .btn-primary>* {
@@ -66,6 +74,3 @@ code {
     monospace;
 }
 
-.rdrMonth {
-  width: 100% !important;
-}

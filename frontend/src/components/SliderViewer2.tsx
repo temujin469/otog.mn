@@ -54,10 +54,10 @@ function SliderViewer2({ data }: Props) {
           >
             {
               data.sliderDates.map(data => (
-                <SwiperSlide key={data._id}>
+                <SwiperSlide key={data.id}>
                   {
                     data.image ? (
-                      <Link to={`/search/${data._id}`}>
+                      <Link to={`/search/${data.id}`}>
                         <div className='flex items-center gap-2 rounded-lg bg-white/20 backdrop-blur-sm  p-1'>
                           <img src={data.image} className="w-full rounded-lg max-h-[90px] object-cover max-w-[100px]" alt={data.title} />
                           <div>

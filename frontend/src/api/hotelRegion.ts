@@ -1,6 +1,6 @@
 import { getHotelRegionsFailure, getHotelRegionsStart, getHotelRegionsSuccess } from "../redux/slices/hotelRegionSlice";
 import { AppDispatch } from "../redux/slices/store";
-import { regions } from "../utils/data";
+import { regions } from "../data/data";
 
 export const getHotelRegions = async (dispatch: AppDispatch) => {
   dispatch(getHotelRegionsStart);

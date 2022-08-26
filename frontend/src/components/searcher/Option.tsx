@@ -31,23 +31,23 @@ function Option({setOpenOptions, openOptions }: Props) {
                   <FaRegUser className="text-xl" />
                   Том хүн
                 </div>
-                <div className="optionCounter">
-                  <button
-                    disabled={option.adult <= 1}
+                <div className="optionCounter flex items-center">
+                  <div
+                    // disabled={option.adult <= 1}
                     className="btn-border p-2"
                     onClick={() => dispatch(setOptionAdult("hasah"))}
                   >
                     <AiOutlineMinus />
-                  </button>
+                  </div>
                   <span className="text-lg font-medium p-2">
                     {option.adult}
                   </span>
-                  <button
+                  <div
                     className="btn-border p-2"
                     onClick={() => dispatch(setOptionAdult("nemeh"))}
                   >
                     <AiOutlinePlus />
-                  </button>
+                  </div>
                 </div>
               </div>
               <div className="flex items-center justify-between">
@@ -55,23 +55,23 @@ function Option({setOpenOptions, openOptions }: Props) {
                   <MdChildCare className="text-xl" />
                   Хүүхэд
                 </div>
-                <div className="optionCounter">
-                  <button
-                    disabled={option.children <= 0}
+                <div className="optionCounter flex items-center">
+                  <div
+                    // disabled={option.children <= 0}
                     className="btn-border p-2"
                     onClick={() => dispatch(setOptionChildren("hasah"))}
                   >
                     <AiOutlineMinus />
-                  </button>
+                  </div>
                   <span className="text-lg font-medium p-2">
                     {option.children}
                   </span>
-                  <button
+                  <div
                     className="btn-border p-2"
                     onClick={() =>dispatch(setOptionChildren("nemeh")) }
                   >
                     <AiOutlinePlus />
-                  </button>
+                  </div>
                 </div>
               </div>
               <div className="flex items-center justify-between">
@@ -79,23 +79,23 @@ function Option({setOpenOptions, openOptions }: Props) {
                   <MdOutlineBedroomChild className="text-xl" />
                   Өрөөний тоо
                 </div>
-                <div className="optionCounter">
-                  <button
-                    disabled={option.room <= 1}
+                <div className="optionCounter flex items-center">
+                  <div
+                    // disabled={option.room <= 1}
                     className="btn-border p-2"
                     onClick={() =>dispatch(setOptionRoom("hasah"))}
                   >
                     <AiOutlineMinus />
-                  </button>
+                  </div>
                   <span className="text-lg font-medium p-2">
                     {option.room}
                   </span>
-                  <button
+                  <div
                     className="btn-border p-2"
                     onClick={() =>dispatch(setOptionRoom("nemeh"))}
                   >
                     <AiOutlinePlus />
-                  </button>
+                  </div>
                 </div>
               </div>
             </div>

@@ -33,6 +33,6 @@ export const hotelRegionSlice = createSlice({
   },
 });
 
-export const { getHotelRegionsStart,getHotelRegionsSuccess,getHotelRegionsFailure } = hotelRegionSlice.actions
+export const { getHotelRegionsStart,getHotelRegionsSuccess,getHotelRegionsFailure } = hotelRegionSlice.actions;
 
 export default hotelRegionSlice.reducer;
