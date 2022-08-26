@@ -7,13 +7,6 @@ const { Schema } = mongoose;
 
 const UserSchema = new Schema(
   {
-    // username: {
-    //   type: String,
-    //   required: [true, "Нэрээ оруулна уу"],
-    //   minlength: [3,'Хэтэрхий богино нэр оруулсан байна'],
-    //   maxlength: [50,'Хэтэрхий урт нэр оруулсан байна'],
-    //   unique: [true,'Хэрэглэгчийн нэр давхардах ёсгүй'],
-    // },
     name: {
       type: String,
       required: [true, "Нэрээ оруулна уу"],
@@ -33,16 +26,8 @@ const UserSchema = new Schema(
       type: String,
       required: false,
     },
-    // img: {
-    //   type: String,
-    // },
-    city: {
-      type: String,
-      required: false,
-    },
     phone: {
       type: String,
-      required: true,
       minlength:[8,'утасны дугаараа зөв оруулан уу'],
       maxlength:[8,'утасны дугаараа зөв оруулан уу']
     },
@@ -50,6 +35,7 @@ const UserSchema = new Schema(
       type: String,
       minlength: [6,'Нууц үг хамгийн багадаа 6 тэмдэгт байх ёстой'],
       required: [true, "Нууц үгээ оруулна уу"],
+      select:false
     },
     verified: {
       type: Boolean,
@@ -57,11 +43,15 @@ const UserSchema = new Schema(
     },
     emailToken: {
       type:String,
+      select:false
+
     },
     role: {
       type: String,
       enum: ["ADMIN", "USER"],
       default: "USER",
+      select:false
+
     },
   },
   { timestamps: true }
@@ -98,4 +88,6 @@ UserSchema.methods.createJWT = function () {
     return token;
 }
 
-module.exports = mongoose.model("User", UserSchema);
+const User =  mongoose.model("users", UserSchema);
+
+module.exports = User;

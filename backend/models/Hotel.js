@@ -1,89 +1,145 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-const hotelSchema = new Schema({
-  owner: {
+
+const RoomInfo = new Schema({
+  roomName: {
+    type: String,
+    required: true,
+  },
+  roomType: {
     type: Schema.Types.ObjectId,
-    ref: 'users'
+    ref: "RoomType",
+    required: true,
   },
-  pin: {
+  quantity: {
+    type: Number,
+    required: true,
+  },
+  size: {
+    type: Number,
+    required: true,
+  },
+  ameninties: {
     type: Schema.Types.ObjectId,
-    ref: 'pins'
+    ref: "Amenities",
+    required: true,
   },
-  type: {
+  availablePeopleQuantity: {
+    type: {
+      adult: {
+        type: Number,
+        required: true,
+      },
+      child: {
+        type: Number,
+        required: true,
+      },
+    },
+    required: true,
+  },
+  images: {
+    type: [String],
+    required: true,
+  },
+  bedOptions: [
+    {
+      bedType: {
+        type: Schema.Types.ObjectId,
+        ref: "BedType",
+        required: true,
+      },
+      quantity: {
+        type: Number,
+        required: true,
+      },
+    },
+  ],
+})
+
+
+const GeneralInfo = new Schema({
+  hotelName: {
     type: String,
-    required: true
+    required: true,
   },
-  stars: {
-    type: Number,
-    required: true
-  },
-  rating: {
-    type: Number,
-    default: 0
-  },
-  name: {
+  registerNum: {
     type: String,
-    required: true
-  },
-  city: {
-    type: String,
-    required: true
-  },
-  address: {
-    type: String,
-    required: true
+    required: true,
   },
   description: {
     type: String,
-    required: true
+    maxlength: [1000, "Хэтэрхий урт бичвэр"],
   },
-  contact: {
-    type: Number,
-    required: true
+  pin: {
+    longitude: Number,
+    latidude: Number,
   },
-  images: {
-    type: Array,
-    default: []
+  service: {
+    type: Schema.Types.ObjectId,
+    ref: "Service",
+    required: true,
   },
-  emailTitle: {
-    type: String,
-    required: true
+  featuredPlace: {
+    type: Schema.Types.ObjectId,
+    ref: "Place",
+    required: true,
   },
-  emailSubject: {
-    type: String,
-    required: true
+  orderTime: {
+    type: Date,
+    required: true,
   },
-  emailBody: {
-    type: String,
-    required: true
+})
+
+// const PricingInfo = new Schema({
+//   flexible:{
+//     type:{
+
+//     }
+//   }
+// })
+
+const HotelSchema = new Schema({
+
+  // Байр, сууцны бүртгэл ,Ерөнхий мэдээлэл 
+  generalInfo: {
+    type:GeneralInfo,
+    required: true,
   },
-  rooms: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'rooms'
-    }
-  ],
+
+  // Байр, сууцны бүртгэл,Өрөөний мэдээлэл
+  roomInfo: {
+    type:[RoomInfo],
+  },
+
+  // Байр, сууцны бүртгэл,Үнийн мэдэээлэл
+  pricingInfo:{
+    type:[PricingInfo]
+  },
+  
   opinions: [
     {
       fullname: {
         type: String,
-        required: true
+        required: true,
       },
       text: {
         type: String,
-        required: true
+        required: true,
       },
       rating: {
         type: Number,
-        required: true
+        required: true,
       },
       date: {
         type: Date,
-        default: new Date
-      }
-    }
-  ]
+        default: new Date(),
+      },
+    },
+  ],
 });
 
-mongoose.model('hotels', hotelSchema);
+ const Hotel = mongoose.model("hotels", HotelSchema);
+ module.exports = Hotel;
+
+

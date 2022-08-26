@@ -13,7 +13,8 @@ const register = asyncHandler(async (req, res, next) => {
   }
 
   const emailToken = sha256("$12hw");
-  const user = await User.create({ ...req.body, emailToken });
+  await User.create({ ...req.body, emailToken });
+  const user = await User.findOne({ email: req.body.email });
   const accessToken = user.createJWT();
 
   // attachCookiesToResponse(res, jwt);
@@ -22,15 +23,17 @@ const register = asyncHandler(async (req, res, next) => {
   // herglechrvv email ywuulah
   await sendEmail(user.email, "Бүртгэлээ баталгаажуулах", url);
 
-
   res.status(StatusCodes.CREATED).json({
     success: true,
     message: "Тань руу Имайл явууллаа баталгаажуулан уу",
-    data: {
-      user:{
-        ...user._doc,
-        accessToken
-      }
+    user: {
+      id: user.id,
+      name: user.name,
+      phone: user.phone,
+      email: user.email,
+      county: user.country,
+      verified: user.verified,
+      accessToken,
     },
   });
 });
@@ -38,21 +41,25 @@ const register = asyncHandler(async (req, res, next) => {
 // email batalgaajuulah
 const verifyEmail = asyncHandler(async (req, res, next) => {
   const user = await User.findOne({ _id: req.params.id });
-  const token = await User.findOne({ emailToken: req.params.token });
-
+  const emailToken = await User.findOne({ emailToken: req.params.token });
   // check user token is valid
   if (token && user) {
     const verifiedUser = await User.updateOne({
-      _id: user._id,
+      _id: user.id,
       verified: true,
     });
 
     res.status(StatusCodes.CREATED).json({
       success: true,
-      message: "Имайл амжилттай баталгаажлаа",
-      data: {
-        token,
-        verifiedUser,
+      message:"Имайл амжилттай баталгаажлаа",
+      user: {
+        id: user.id,
+        name: user.name,
+        phone: user.phone,
+        email: user.email,
+        county: user.country,
+        verified: user.verified,
+        emailToken,
       },
     });
   } else {
@@ -61,18 +68,19 @@ const verifyEmail = asyncHandler(async (req, res, next) => {
 });
 
 // login
-const login = asyncHandler(async (req, res, next) => {
+const signin = asyncHandler(async (req, res, next) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
     throw new CustomError.BadRequestError("Имэйл болон нууц үгээ оруулна уу");
   }
 
-  const user = await User.findOne({ email });
+  const user = await User.findOne({ email }).select("+password");
 
   if (!user) {
     throw new CustomError.UnauthenticatedError("Имэйл буруу байна");
   }
+
   const isPasswordCorrect = await user.comparePassword(password);
 
   if (!isPasswordCorrect) {
@@ -83,30 +91,31 @@ const login = asyncHandler(async (req, res, next) => {
 
   // attachCookiesToResponse(res, jwt);
 
-  // const user = user;
-
   res.status(StatusCodes.OK).json({
     success: "true",
-    data: {
-      user:{
-        ...user._doc,
-        accessToken
-      }
+    user: {
+      id: user.id,
+      name: user.name,
+      phone: user.phone,
+      email: user.email,
+      county: user.country,
+      verified: user.verified,
+      accessToken,
     },
   });
 });
 
-// logout
-const logout = asyncHandler(async (req, res, next) => {
-  res.cookie("token", "logout", {
-    httpOnly: true,
-    expires: new Date(Date.now() + 1000),
-  });
-  res.status(StatusCodes.OK).json({
-    success: true,
-    message:"succesfuly log out"
-  });
-});
+// // logout
+// const logout = asyncHandler(async (req, res, next) => {
+//   res.cookie("token", "logout", {
+//     httpOnly: true,
+//     expires: new Date(Date.now() + 1000),
+//   });
+//   res.status(StatusCodes.OK).json({
+//     success: true,
+//     message: "succesfuly log out",
+//   });
+// });
 
 // const refreshToken = asyncHandler(async(req,res,next)=> {
 //   let = refreshTokens = [];
@@ -118,7 +127,6 @@ const logout = asyncHandler(async (req, res, next) => {
 
 module.exports = {
   register,
-  login,
-  logout,
+  signin,
   verifyEmail,
 };

@@ -6,17 +6,15 @@ const asyncHandler = require("express-async-handler");
 
 const getAllUsers = asyncHandler(async (req, res, next) => {
   console.log(req.user);
-  const users = await User.find({ role: "USER" }).select("-password");
+  const users = await User.find({ role: "USER" });
   res.status(StatusCodes.OK).json({
     success: true,
-    data: {
-      users,
-    },
+    users,
   });
 });
 
 const getSingleUser = asyncHandler(async (req, res, next) => {
-  const user = await User.findOne({ _id: req.params.id }).select("-password");
+  const user = await User.findOne({ _id: req.params.id });
   if (!user) {
     throw new CustomError.NotFoundError(
       `${req.params.id} :ID-тай хэрэглэгч алга`
@@ -25,9 +23,13 @@ const getSingleUser = asyncHandler(async (req, res, next) => {
 
   checkPermissions(req.user, user._id);
   res.status(StatusCodes.OK).json({
-    success: true,
-    data: {
-      user
+    user: {
+      id: user.id,
+      name: user.name,
+      phone: user.phone,
+      email: user.email,
+      county: user.country,
+      verified: user.verified,
     },
   });
 });
@@ -38,7 +40,7 @@ const showCurrentUser = asyncHandler(async (req, res, next) => {
 
 // update user with user.save()
 const updateUser = asyncHandler(async (req, res, next) => {
-  const { email, name, username, country, city, phone } = req.body;
+  // const { email, name, username, country, city, phone } = req.body;
 
   // if (!email || !name || !username || !country || !city || !phone) {
   //   throw new CustomError.BadRequestError("Шинчлэх мэдээллээ оруулан уу");
@@ -46,15 +48,24 @@ const updateUser = asyncHandler(async (req, res, next) => {
 
   const user = await User.findOne({ _id: req.user.userId });
 
-  const updatedUser = await User.findOneAndUpdate({ _id: req.user.userId },req.body,{ new: true, runValidators: true });
+  const updatedUser = await User.findOneAndUpdate(
+    { _id: req.user.userId },
+    req.body,
+    { new: true, runValidators: true }
+  );
 
-  const jwt = user.createJWT();
+  const accessToken = user.createJWT();
   // attachCookiesToResponse(res, jwt);
   res.status(StatusCodes.OK).json({
     success: true,
-    data: {
-      jwt,
-      updatedUser,
+    user: {
+      id: updatedUser.id,
+      name: updatedUser.name,
+      phone: updatedUser.phone,
+      email: updatedUser.email,
+      county: updatedUser.country,
+      verified: updatedUser.verified,
+      accessToken,
     },
   });
 });
@@ -73,11 +84,10 @@ const updateUserPassword = asyncHandler(async (req, res, next) => {
   user.password = newPassword;
 
   await user.save();
+
   res.status(StatusCodes.OK).json({
     success: true,
-    data: {
-      msg: "Нууц үг амжилттай шинэчлэгдсэн.",
-    },
+    message: "Нууц үг амжилттай шинэчлэгдсэн.",
   });
 });
 
