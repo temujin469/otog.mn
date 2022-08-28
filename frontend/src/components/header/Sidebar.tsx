@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 import { AiOutlineClose } from 'react-icons/ai'
 import { BiUserCircle } from "react-icons/bi";
 import ProfilePopup from "../ProfilePopup";
-import { useAppSelector } from "../../hooks";
+import { useAppDispatch, useAppSelector } from "../../hooks";
 import { useState } from "react";
+import { handleShowLogin } from "../../redux/slices/appSlice";
 
 type Props = {
   show: boolean
@@ -14,8 +15,14 @@ function Sidebar({ show, handleShow }: Props) {
   const { user } = useAppSelector(state => state.user)
   const [showProfile, setShowProfile] = useState<boolean>(false);
 
+  const dispatch = useAppDispatch()
+
+  const   handleShowProfile = ()=>{
+    user ? setShowProfile(!showProfile) : dispatch(handleShowLogin(true))
+  }
+
   return (
-    <div className={`w-full bg-white flex flex-col justify-between h-screen transition-all duration-400 z-50 absolute top-0 ${show ? 'right-0 block' : 'right-[-100%] hidden'}`}>
+    <div className={`w-full bg-white flex flex-col justify-between h-screen transition-all duration-400 z-30 fixed ${show ? 'right-0  top-0 block' : 'right-[-100%] hidden'}`}>
       <div>
         <div className='p-5 border-b border-gray-light'>
           <button onClick={handleShow}>
@@ -24,7 +31,7 @@ function Sidebar({ show, handleShow }: Props) {
         </div>
         <ul className="flex flex-col text-textClr md:font-medium px-5">
           <li className='border-b border-gray-light py-5'>
-            <div className='text-textClr cursor-pointer flex items-center gap-1' onClick={() => setShowProfile(!showProfile)}>
+            <div className='text-textClr cursor-pointer flex items-center gap-1' onClick={handleShowProfile}>
               <BiUserCircle className='text-xl' />
               <p>{user ? user.name : "Tаны профайл"}</p>
             </div>

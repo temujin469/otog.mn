@@ -116,7 +116,7 @@ function Footer() {
 
             <ul className="list-none mb-0">
               <li>
-                <a href="#!" className="footer-link">Бидний тухай</a>
+                <a href="/aboutUs" className="footer-link">Бидний тухай</a>
               </li>
               <li>
                 <a href="#!" className="footer-link">Байр сууц бүртгүүлэх</a>
@@ -125,7 +125,7 @@ function Footer() {
                 <a href="#!" className="footer-link">Хамтран ажиллах</a>
               </li>
               <li>
-                <a href="#!" className="footer-link">Блог</a>
+                <a href="/blogs" className="footer-link">Блог</a>
               </li>
             </ul>
           </div>

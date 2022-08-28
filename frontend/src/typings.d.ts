@@ -58,3 +58,14 @@ export type Option = {
   children: number
   room: number
 }
+
+
+export type Blog = {
+  title:string
+  date:Date
+  description:string
+  content: string
+  id:string
+  image:string
+};
+

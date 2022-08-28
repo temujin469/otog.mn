@@ -1,4 +1,4 @@
 
   .footer-link {
-    @apply text-gray hover:text-primary;
+    @apply text-gray-dark hover:text-primary;
   }

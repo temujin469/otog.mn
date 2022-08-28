@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js"
@@ -13,15 +16,19 @@
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "cookie-parser": "^1.4.6",
+    "cookie-session": "^2.0.0",
     "cors": "^2.8.5",
     "crypto-js": "^4.1.1",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "express-async-handler": "^1.2.0",
+    "firebase-admin": "^11.0.1",
     "http-status-codes": "^2.2.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.5.2",
     "nodemailer": "^6.7.8",
+    "passport": "^0.6.0",
+    "passport-google-oauth20": "^2.0.0",
     "validator": "^13.7.0"
   },
   "devDependencies": {

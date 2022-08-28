@@ -5,9 +5,6 @@ const User = require('./models/User');
 
 dotenv.config();
 
-
-
-
 const users = JSON.parse(
   fs.readFileSync(__dirname + "/data/users.json","utf-8")
 )

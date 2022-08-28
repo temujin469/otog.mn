@@ -63,7 +63,7 @@ const HotelGallery = ({ images }: Props) => {
 
   return (
     <div>
-      <div className='md:mt-10'>
+      <div className='md:mt-10 px-4 md:px-0'>
         <ImageGallery items={items} lazyLoad={true} showPlayButton={false} />
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React, { CSSProperties } from 'react'
-import { bg_images } from '../data/data'
-import Navbar from './header/Navbar';
-import Searcher from './searcher/Searcher';
+import { bg_images } from '../../data/data'
+import Header from '../header/Header';
+import Searcher from '../searcher/Searcher';
 
 const bg: CSSProperties = {
   backgroundImage: `url(${bg_images.back1})`,
@@ -15,7 +15,7 @@ function TopSection() {
     <div className='p-5 2xl:p-7 mb-5'>
       <div className="rounded-lg min-h-[600px]" style={bg} >
         <div className='pb-14 mx-auto'>
-          <Navbar />
+          <Header/>
           <div className='container'>
             <div className='mx-auto min-h-[500px] flex flex-col gap-10 justify-center'>
               <div className='text-white'>

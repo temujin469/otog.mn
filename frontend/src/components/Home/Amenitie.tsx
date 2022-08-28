@@ -1,6 +1,6 @@
 import React from 'react'
-import { SliderViewerData } from '../typings'
-import { bg_images, amenities} from '../data/data'
+import { SliderViewerData } from '../../typings'
+import { bg_images, amenities} from '../../data/data'
 import SliderViewer from './SliderViewer'
 
 function Amenitie() {

@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .rdrMonth {
   width: 100% !important;
 }
@@ -43,3 +47,18 @@ div .ant-select .ant-select-selector>.ant-select-selection-search >input.ant-sel
   @apply z-10 bg-white
 }
 
+.ant-radio-button-wrapper {
+  @apply flex-[1] text-center
+}
+
+div.ant-radio-group-solid .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+  @apply bg-primary border-none
+}
+div.ant-radio-group-solid .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)::before {
+  @apply bg-transparent
+}
+
+
+div.ant-radio-group-solid .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):hover {
+  @apply bg-primary
+}

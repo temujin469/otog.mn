@@ -20,14 +20,14 @@ function Search() {
     fetchData()
   }, [])
   return (
-    <div className='h-screen bg-gray-light'>
+    <div className='bg-gray-light'>
       <SearchHeader withFilterRow />
       <div className=''>
-        <div className='grid xl:grid-cols-12'>
+        <div className='xl:grid grid-cols-11'>
           <div className='col-span-6'>
             <Hotels />
           </div>
-          <div className='col-span-6 h-[calc(100vh-110px)]'>
+          <div className='col-span-5 hidden xl:block h-[calc(100vh-110px)]'>
             <div className='h-[60%]'><Map /></div>
             <div className='h-[40%]'>
               <Advertising />

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { useAppSelector } from '../hooks'
+import { useAppSelector } from '../../hooks'
 
 function HotelRegion() {
 

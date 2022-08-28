@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks";
 import { signin } from "../../api/user";
 import { handleShowLogin } from "../../redux/slices/appSlice";
 import { MdOutlineCancel } from "react-icons/md";
+import { signinWithGoogle } from "../../utils/firebase";
 
 
 const schema = yup.object().shape({
@@ -14,7 +15,7 @@ const schema = yup.object().shape({
 });
 
 type Props = {
-  setShow: Dispatch<SetStateAction<"register" | "login">>
+  setShow: Dispatch<SetStateAction<"register" | "login" | "google"|"facebook">>
 }
 
 function Login({setShow}:Props) {
@@ -37,7 +38,7 @@ function Login({setShow}:Props) {
 
   return (
     <div>
-      <div className="absolute top-[50%] translate-x-[-50%] translate-y-[-50%] left-[50%] w-full  max-w-[600px] p-5">
+      <div className="absolute top-[50%] translate-x-[-50%] translate-y-[-50%] left-[50%] w-full z-50  max-w-[600px] p-5">
         <div className=" flex flex-col rounded-2xl bg-white">
           <div className="text-end">
             <button className='text-gray text-2xl hover:shadow-lg hover:bg-gray-light rounded-full p-3 m-2' onClick={() => dispatch(handleShowLogin(false))}><MdOutlineCancel /></button>
@@ -53,6 +54,7 @@ function Login({setShow}:Props) {
                 className="bg-white text-gray-800 font-normal px-5 py-3 rounded-xl outline-none focus:outline-none mr-2 mb-1 uppercase shadow-md hover:shadow-xl hover:bg-gray-light inline-flex items-center text-xs"
                 type="button"
                 style={{ transition: "all .15s ease" }}
+                onClick={()=>setShow('facebook')}
               >
                 <img
                   alt="..."
@@ -64,6 +66,7 @@ function Login({setShow}:Props) {
               <button
                 className="bg-white active:bg-gray-100 text-gray-800 font-normal px-5 py-3 rounded-xl outline-none focus:outline-none mr-1 mb-1 uppercase shadow-md hover:bg-gray-light hover:shadow-xl inline-flex items-center text-xs"
                 type="button"
+                onClick={()=>signinWithGoogle(dispatch)}
                 style={{ transition: "all .15s ease" }}
               >
                 <img

@@ -1,5 +1,5 @@
-import { SliderViewerData } from '../typings'
-import { bg_images, hotelTypes } from '../data/data'
+import { SliderViewerData } from '../../typings'
+import { bg_images, hotelTypes } from '../../data/data'
 import SliderViewer from './SliderViewer'
 
 

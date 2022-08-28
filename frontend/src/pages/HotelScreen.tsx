@@ -26,9 +26,9 @@ const reverseButton = <button className='btn-primary hidden font-medium md:block
 
 function HotelScreen() {
   return (
-    <div className='max-h-screen'>
-      <SearchHeader fixed withFilterRow />
-      <div className='md:pt-[110px]'>
+    <div className='max-h-screen overflow-y-scroll'>
+      <SearchHeader fixed/>
+      <div className='md:pt-[60px]'>
         <div className='md:container'>
           <HotelGallery images={cityImages(10)} />
           {/* <StickyContainer> */}

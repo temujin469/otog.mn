@@ -151,7 +151,7 @@ export const userProfileData = [
   {
     icon: <FaRegUser />,
     title: 'Нүүр хуудас',
-    link:'/profile',
+    link:'/userPanel',
     desc: 'Хэрэглэгчийн хуудас',
     iconColor: '#03C9D7',
     iconBg: '#E5FAFB',
@@ -159,7 +159,7 @@ export const userProfileData = [
   {
     icon: <BsJournalBookmark />,
     title: 'Миний захиалга',
-    link:'/profile/orders',
+    link:'/userPanel/orders',
     desc: 'Захиалсан байр сууцууд',
     iconColor: 'rgb(0, 194, 146)',
     iconBg: 'rgb(235, 250, 242)',
@@ -167,7 +167,7 @@ export const userProfileData = [
   {
     icon: <AiOutlineSetting />,
     title: 'Тохиргоо',
-    link:'/profile/settings',
+    link:'/userPanel/settings',
     desc: 'Мэдээллээ шинэчлэх',
     iconColor: 'rgb(255, 244, 229)',
     iconBg: 'rgb(254, 201, 15)',

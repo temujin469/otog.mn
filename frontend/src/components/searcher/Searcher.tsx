@@ -23,15 +23,24 @@ function Searcher() {
 
   const navigate = useNavigate();
 
-  const inpuRef:any = useRef()
+  const inpuRef: any = useRef()
 
-  const handleSearch = (e:any) => {
+  const handleSearch = (e: any) => {
     dispatch(setDestination(inpuRef.current?.value))
     navigate("/search", { state: { destination, date } });
     e.preventDefault()
 
   };
 
+  const handleOpen = (id: "date" | "option") => {
+    if (id === "date") {
+      setOpenDate(!openDate)
+      setOpenOptions(false)
+    } else {
+      setOpenDate(false)
+      setOpenOptions(!openOptions)
+    }
+  }
 
   return (
     <div className='bg-white rounded-xl text-gray select-none'>
@@ -39,7 +48,7 @@ function Searcher() {
         <div className='p-1 border-gray-light md:flex-[1] h-[69px]'>
           <div className='hover:bg-gray-light h-full rounded-xl flex items-center gap-2 p-3'>
             <BsSearch className='text-[20px] text-gray' />
-            <input ref={inpuRef} placeholder='Хайх газрын нэрээ оруулна уу?' className='outline-none font-medium w-full h-full place bg-transparent'/>
+            <input ref={inpuRef} placeholder='Хайх газрын нэрээ оруулна уу?' className='outline-none font-medium w-full h-full place bg-transparent' />
             {/* <AutoComplete
               style={{ width: 200 }}
               className="outline-none font-medium w-full h-full place bg-transparent bg-none"
@@ -52,7 +61,7 @@ function Searcher() {
           </div>
         </div>
         <div className='p-1 border-gray-light md:relative md:flex-[1] h-[69px]'>
-          <div className='hover:bg-gray-light h-full gap-2  rounded-xl flex items-center p-3' onClick={() => setOpenDate(!openDate)}>
+          <div className='hover:bg-gray-light h-full gap-2  rounded-xl flex items-center p-3' onClick={() => handleOpen("date")}>
             <MdDateRange className='text-[20px] text-gray' />
             <p className='font-medium flex items-center gap-2'>
               {`${format(date[0].startDate, "MM/dd/yyyy")}`} <VscArrowBoth />{` ${format(date[0].endDate, "MM/dd/yyyy")}`}
@@ -61,7 +70,7 @@ function Searcher() {
           <DatePicker openDate={openDate} setOpenDate={setOpenDate} />
         </div>
         <div className='p-1 border-gray-light cursor-pointer h-[69px] md:relative'>
-          <div className='hover:bg-gray-light h-full gap-2 rounded-xl flex items-center p-3' onClick={() => setOpenOptions(!openOptions)}>
+          <div className='hover:bg-gray-light h-full gap-2 rounded-xl flex items-center p-3' onClick={() => handleOpen('option')}>
             <BsPerson className='text-[20px] text-gray' />
             <p className='font-medium'>{`Хүний тоо ${totalGuests}`}</p>
           </div>

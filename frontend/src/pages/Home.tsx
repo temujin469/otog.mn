@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react'
-import HotelCategory from '../components/HotelTypes'
-import BestRatedRegion from '../components/BestRatedHotelRegion'
-import Blog from '../components/Blog'
-import TopSection from '../components/TopSection'
-import Amenitie from '../components/Amenitie'
+import HotelCategory from '../components/Home/HotelTypes'
+import BestRatedRegion from '../components/Home/BestRatedHotelRegion'
+import Blog from '../components/Home/Blog'
+import TopSection from '../components/Home/TopSection'
+import Amenitie from '../components/Home/Amenitie'
 import Footer from '../components/footer/Footer'
-import Region from '../components/hotelRegion'
+import Region from '../components/Home/hotelRegion'
 import { getHotels } from '../api/hotel'
 import { useAppDispatch } from '../hooks'
 import { getHotelRegions } from '../api/hotelRegion'
-import Plan from '../components/Plan'
+import Plan from '../components/Home/Plan'
 
 function Home() {
   const dispatch = useAppDispatch()
@@ -23,9 +23,8 @@ function Home() {
 
   }, [])
 
-
   return (
-    <div>
+    <div className='h-screen overflow-y-scroll'>
       <TopSection />
       <HotelCategory />
       <Amenitie />

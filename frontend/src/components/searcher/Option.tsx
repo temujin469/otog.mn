@@ -17,7 +17,7 @@ function Option({setOpenOptions, openOptions }: Props) {
   return (
     <>
       {openOptions && (
-        <div className='absolute z-50 md:shadow-md justify-between left-0 flex flex-col md:block top-0 bg-white md:top-[75px] w-full md:h-auto h-screen md:w-[300px] md:left-[50%] md:translate-x-[-50%] rounded-xl md:p-3'>
+        <div className='absolute border border-gray-light z-50 md:shadow-md justify-between left-0 flex flex-col md:block top-0 bg-white md:top-[70px] w-full md:h-auto h-screen md:w-[300px] md:left-[50%] md:translate-x-[-50%] rounded-xl md:p-3'>
           <div className='w-full'>
             <div className='md:hidden bg-gray-light p-5'>
               <div className='gap-2 rounded-xl bg-white flex items-center p-4'>

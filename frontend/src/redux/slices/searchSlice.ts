@@ -14,6 +14,15 @@ interface SearchState {
   date: DateType[];
   option: Option;
   totalGuests: number;
+  room?:{
+    bedRoom:number
+    bathRoom:number
+  }
+  price?:{
+    lt:number
+    gt:number
+  }
+  hotelType?:string
 }
 
 const initialState: SearchState = {

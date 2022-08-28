@@ -1,41 +1,58 @@
 import React, { useState } from "react";
-import { AiOutlineMenu } from "react-icons/ai";
-import { FaRegUser } from "react-icons/fa";
+import { Link, useLocation } from "react-router-dom";
+import classNames  from 'classnames'
 import { Route, Routes } from "react-router-dom";
+import { userProfileData } from "../../data/profileData";
 import Order from "./Order";
-// import Navbar from "../../components/profile/ProfileNavbar";
-import Sidebar from '../../components/userPanel/UserPanelSidebar'
 import Profile from "./Profile";
 import Settings from "./Settings";
+import Header2 from "../../components/header/Header2";
 
 const MainPage = () => {
-  const [show,setShow] = useState(false)
+  const [show, setShow] = useState(false)
+
+  const location = useLocation()
+
+  const isActiveLink = (currentLink:string) => currentLink === location.pathname;
+  
+  const menuLink = classNames("flex gap-5 rounded-xl p-4 hover:bg-gray-light cursor-pointer")
 
   return (
-    <div className="">
-        <div className='flex'>
-          <Sidebar show={show} setShow={setShow}/>
-
-          <section className="relative w-full bg-gray-light h-screen">
-            {/* <Navbar /> */}
-            <nav className="p-5 flex justify-between items-center">
-              <button onClick={()=>setShow(!show)}>
-                <AiOutlineMenu className="text-[20px] text-primary"/>
-              </button>
-              <ul className="m-0 flex items-center gap-5">
-                <li>item</li>
-                <li><FaRegUser className="text-[20px] text-primary"/></li>
-              </ul>
-            </nav>
-            <main className="mt-5 p-5">
+    <div className=" h-screen overflow-hidden">
+      <Header2/>
+      <div className="mt-[52px]">
+        <div className='grid md:grid-cols-9'>
+          <div className="md:col-span-6 overflow-y-scroll">
+            <main className="p-5">
               <Routes>
-                <Route index element={<Profile/>} />
-                <Route path="/orders" element={<Order/>} />
-                <Route path="/settings" element={<Settings/>} />
+                <Route index element={<Profile />} />
+                <Route path="/orders" element={<Order />} />
+                <Route path="/settings" element={<Settings />} />
               </Routes>
             </main>
-          </section>
+          </div>
+          <div className="md:col-span-3 shadow-lg h-screen w-full">
+            <ul className="flex flex-col gap-2 p-4">
+              {userProfileData.map((item, index) => (
+                <Link to={item.link} key={index} onClick={()=>isActiveLink(item.link)} className={menuLink}>
+                  <button
+                    type="button"
+                    style={{ color: item.iconColor, backgroundColor: item.iconBg }}
+                    className=" text-xl rounded-lg p-3 hover:bg-gray"
+                  >
+                    {item.icon}
+                  </button>
+
+                  <div>
+                    <p className="font-semibold text-textClr/80">{item.title}</p>
+                    <p className="text-gray/60 text-sm"> {item.desc} </p>
+                  </div>
+                </Link>
+              ))}
+            </ul>
+          </div>
         </div>
+      </div>
     </div>
 
   );

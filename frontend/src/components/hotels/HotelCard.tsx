@@ -20,7 +20,7 @@ function HotelCard({ hotel }: Props) {
 
 
   return (
-    <Link to={`/hotels/${hotel.id}`} className='rounded-lg cursor-pointer shadow hover:shadow-lg p-3 flex flex-col md:flex-row gap-3 bg-white'>
+    <Link to={`/hotels/${hotel.id}`} className='rounded-lg hover:text-textClr cursor-pointer shadow-lg hover:shadow-xl p-3 flex flex-col md:flex-row gap-3 bg-white'>
       <div className='flex items-start md:w-[226px] md:h-[226px] h-[200px]'>
         <img src={hotel.images[3]} alt={hotel.name} className=" rounded-lg object-cover h-full w-full" />
       </div>
