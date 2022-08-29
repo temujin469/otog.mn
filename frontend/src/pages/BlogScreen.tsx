@@ -20,7 +20,7 @@ function BlogScreen() {
             <div>
               <h3 className="heading-md lg:text-2xl m-0">{blog.title}</h3>
               <p className=" text-gray flex items-center gap-1 mb-5"><BsCalendarDate />{moment(blog.date).format("MMM Do YY")}</p>
-              <div className="w-full overflow-hidden rounded-2xl max-h-[500px] mb-5">
+              <div className="w-full overflow-hidden rounded-2xl max-h-[600px] mb-5">
                 <img alt="Post thumbnail" src={blog.image} className="transition-all w-full h-full object-cover" />
               </div>
               <p>{blog.content}</p>

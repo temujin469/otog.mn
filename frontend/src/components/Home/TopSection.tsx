@@ -12,12 +12,12 @@ const bg: CSSProperties = {
 
 function TopSection() {
   return (
-    <div className='p-5 2xl:p-7 mb-5'>
-      <div className="rounded-lg min-h-[600px]" style={bg} >
-        <div className='pb-14 mx-auto'>
-          <Header/>
-          <div className='container'>
-            <div className='mx-auto min-h-[500px] flex flex-col gap-10 justify-center'>
+    <div className='p-5 2xl:p-7 mb-5 h-screen  md:min-h-[600px]'>
+      <div className="rounded-lg h-full" style={bg} >
+        <Header />
+        <div className='pb-14 h-full'>
+          <div className='container h-full flex items-center'>
+            <div className='flex flex-col gap-10 pb-32 justify-center flex-[1]'>
               <div className='text-white'>
                 <h2 className='heading-xl text-white'>Байр, сууц захиалгын хамгийн өргөн сонголт</h2>
                 <p>......... байр, сууцны мэдээлэл байна.</p>

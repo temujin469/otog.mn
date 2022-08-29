@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { BsPerson, BsSearch } from 'react-icons/bs'
 import { MdDateRange, MdOutlineBedroomChild } from 'react-icons/md'
 import { RiPriceTag3Line } from 'react-icons/ri'
@@ -10,7 +10,7 @@ import Sidebar from '../header/Sidebar'
 import Option from '../searcher/Option';
 import DatePicker from '../searcher/DatePicker';
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { setDestination } from '../../redux/slices/searchSlice';
+import { handleDestination } from '../../redux/slices/searchSlice';
 import { Link } from 'react-router-dom';
 import { BiBuildingHouse, BiUserCircle } from 'react-icons/bi';
 import ProfilePopup from '../ProfilePopup';
@@ -25,6 +25,8 @@ import HotelType from '../searcher/HotelType'
 
 
 function SearchHeader({ fixed, withFilterRow }: any) {
+  const search = useAppSelector(state => state.search)
+  const [destination,setDestination] = useState(search.destination)
 
   const [openDate, setOpenDate] = useState(false);
   const [openOptions, setOpenOptions] = useState<boolean>(false);
@@ -35,18 +37,16 @@ function SearchHeader({ fixed, withFilterRow }: any) {
   const [show, setShow] = useState(false)
   const [showProfile, setShowProfile] = useState<boolean>(false);
   const { user } = useAppSelector(state => state.user)
-  const { date, totalGuests } = useAppSelector(state => state.search)
 
 
   const handleShow = () => {
     setShow(!show)
   }
 
-  const inputRef: any = useRef()
-
   const dispatch = useAppDispatch()
-  const handleSearch = (e: any) => {
-    dispatch(setDestination(inputRef.current?.value))
+
+ const handleSearch = (e:any) => {
+    dispatch(handleDestination(destination as string))
     e.preventDefault()
   };
 
@@ -116,20 +116,20 @@ function SearchHeader({ fixed, withFilterRow }: any) {
           </div>
 
 
-          <form onSubmit={handleSearch} className='border shadow-md bg-white md:shadow-none flex-[1] border-gray md:border-none rounded-lg md:rounded-none md:p-0 flex flex-col md:flex-row divide-y md:divide-x md:divide-y-0'>
-            <div className='border-gray md:flex-[1] md:h-full rounded-t-lg overflow-hidden'>
+          <div  className='border shadow-md bg-white md:shadow-none border-gray md:border-none rounded-lg md:rounded-none md:p-0 flex flex-col md:flex-row divide-y md:divide-x md:divide-y-0'>
+            <form onSubmit={handleSearch} className='border-gray lg:min-w-[500px] md:h-full rounded-t-lg overflow-hidden'>
               <div className='hover:bg-gray-light h-full flex items-center gap-2 p-3'>
                 <BsSearch className='text-[20px] text-gray' />
-                <input placeholder='Хайх газрын нэрээ оруулна уу?' ref={inputRef} className='outline-none font-mediun w-full h-full place bg-transparent' />
+                <input placeholder='Хайх газрын нэрээ оруулна уу?' onChange={(e)=>setDestination(e.target.value)} value={destination} className='outline-none font-mediun w-full h-full place bg-transparent' />
               </div>
-            </div>
+            </form>
 
             <div className='flex items-center divide-x'>
               <div className='border-gray md:relative md:flex-[1] md:h-full'>
                 <div className='hover:bg-gray-light h-full gap-2 flex items-center p-3' onClick={() => handleOpen('1')}>
                   <MdDateRange className='text-[20px] text-gray' />
                   <p className='font-medium flex items-center gap-2'>
-                    {`${format(date[0].startDate, "MM/dd/yyyy")}`} <VscArrowBoth />{` ${format(date[0].endDate, "MM/dd/yyyy")}`}
+                    {`${format(search.date[0].startDate, "MM/dd/yyyy")}`} <VscArrowBoth />{` ${format(search.date[0].endDate, "MM/dd/yyyy")}`}
                   </p>
                 </div>
                 <DatePicker openDate={openDate} setOpenDate={setOpenDate} />
@@ -137,17 +137,17 @@ function SearchHeader({ fixed, withFilterRow }: any) {
               <div className='border-gray cursor-pointer md:h-full md:relative'>
                 <div className='hover:bg-gray-light h-full gap-2 flex items-center p-3' onClick={() => handleOpen('2')}>
                   <BsPerson className='text-[20px] text-gray' />
-                  <p className='font-medium'>{`Зочин ${totalGuests}`}</p>
+                  <p className='font-medium whitespace-nowrap'>{`Зочин ${search.adult + search.children}`}</p>
                 </div>
                 <Option openOptions={openOptions} setOpenOptions={setOpenOptions} />
               </div>
             </div>
-          </form>
+          </div>
 
 
-          <div className='hidden md:flex justify-end border-gray h-full md:relative items-center'>
+          <div className='hidden md:flex lg:flex-[1] justify-end border-gray h-full md:relative items-center'>
             <ul className='flex items-center m-0 gap-5 px-5'>
-              <li className="px-4 py-2 rounded-md hover:bg-black/10 h-[44px] lg:flex items-center hidden">
+              <li className="px-4 py-2 rounded-md hover:bg-black/10 h-[44px] xl:flex items-center hidden">
                 <p className='flex items-center tracking-wide gap-2 uppercase'><AiOutlineGlobal className='text-xl' />MN/₮</p>
               </li>
               <li className='relative h-[44px]'>
@@ -163,7 +163,7 @@ function SearchHeader({ fixed, withFilterRow }: any) {
         <div className={withFilterRow ? 'block' : 'hidden'}>
           {/* row2 */}
           <div className='h-[50px] hidden md:flex border-b border-gray items-center gap-5 px-5 bg-white'>
-            <div className='relative'>
+            <div>
               <button className='tag bg-primary text-white rounded-full py-3 px-3 md:py-1 md:px-3' onClick={() => handleOpen('6')}>
                 <GoSettings className='text-lg' /> <p className='hidden sm:block'>Шүүх & сортлох</p>
               </button>

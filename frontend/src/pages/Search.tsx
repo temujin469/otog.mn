@@ -20,7 +20,7 @@ function Search() {
     fetchData()
   }, [])
   return (
-    <div className='bg-gray-light'>
+    <div className='h-screen overflow-y-scroll bg-gray-light'>
       <SearchHeader withFilterRow />
       <div className=''>
         <div className='xl:grid grid-cols-11'>

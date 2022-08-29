@@ -6,38 +6,40 @@ import { Option } from "../../typings";
 type DateType = {
   startDate: any;
   endDate: any;
-  key:"selection"
+  key: "selection";
 };
 
 interface SearchState {
-  destination: string;
+  destination?: string;
   date: DateType[];
-  option: Option;
-  totalGuests: number;
-  room?:{
-    bedRoom:number
-    bathRoom:number
-  }
-  price?:{
-    lt:number
-    gt:number
-  }
-  hotelType?:string
+  // option: Option;
+  children: number;
+  adult: number;
+  bedroom: number;
+  bathroom: number;
+  price: {
+    lt: number;
+    gt: number;
+  } | null;
+  hotelType: string[] | null;
+  amenities: string[] | null;
 }
 
 const initialState: SearchState = {
-  destination: "",
-  date: [{
-    startDate: new Date(),
-    endDate: new Date(),
-    key:"selection"
-  }],
-  option: {
-    adult: 1,
-    children: 0,
-    room: 1,
-  },
-  totalGuests: 1,
+  date: [
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      key: "selection",
+    },
+  ],
+  adult: 1,
+  bedroom: 1,
+  bathroom: 0,
+  price: null,
+  hotelType: null,
+  amenities: null,
+  children: 0,
 };
 
 export const searchSlice = createSlice({
@@ -45,40 +47,34 @@ export const searchSlice = createSlice({
   initialState,
 
   reducers: {
-    setOptionChildren: (state,action:PayloadAction< "nemeh" | "hasah" >) => {
-      if(action.payload=== "nemeh"){
-        state.option.children += 1
-      }else{
-        state.option.children -= 1
-      }
-      state.totalGuests = state.option.adult + state.option.children
+    handleChildren: (state, action: PayloadAction<number>) => {
+      state.children = action.payload;
     },
-    setOptionAdult: (state,action:PayloadAction< "nemeh" | "hasah" >) => {
-      if(action.payload === "nemeh"){
-        state.option.adult += 1
-      }else{
-        state.option.adult -= 1
-      }
-      state.totalGuests = state.option.adult + state.option.children
-
+    handleAdult: (state, action: PayloadAction<number>) => {
+      state.adult = action.payload;
     },
-    setOptionRoom: (state,action:PayloadAction< "nemeh" | "hasah" >) => {
-      if(action.payload === "nemeh"){
-        state.option.room += 1
-      }else{
-        state.option.room -= 1
-      }
-      state.totalGuests = state.option.adult + state.option.children
+    handleBedroom: (state, action: PayloadAction<number>) => {
+      state.bedroom = action.payload;
     },
-    setDate: (state, action: PayloadAction<any>) => {
-      state.date = action.payload
+    handleBathroom: (state, action: PayloadAction<number>) => {
+      state.bathroom = action.payload;
     },
-    setDestination: (state, action: PayloadAction<string>) => {
-      state.destination= action.payload
+    handleDate: (state, action: PayloadAction<any>) => {
+      state.date = action.payload;
+    },
+    handleDestination: (state, action: PayloadAction<string>) => {
+      state.destination = action.payload;
     },
   },
 });
 
-export const { setDate,setOptionAdult,setOptionRoom,setOptionChildren,setDestination } = searchSlice.actions;
+export const {
+  handleDate,
+  handleBedroom,
+  handleDestination,
+  handleAdult,
+  handleChildren,
+  handleBathroom,
+} = searchSlice.actions;
 
 export default searchSlice.reducer;
