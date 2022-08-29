@@ -1,4 +1,3 @@
-import { previousDay } from 'date-fns'
 import React, { useState } from 'react'
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
 import { BsPerson } from 'react-icons/bs'

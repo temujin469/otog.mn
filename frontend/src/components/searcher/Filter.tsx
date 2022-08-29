@@ -5,7 +5,7 @@ import { FaRegUser } from 'react-icons/fa'
 import { MdChildCare, MdOutlineBedroomChild, MdOutlineCancel } from 'react-icons/md'
 import { amenities, hotelTypes } from '../../data/data'
 import { useAppDispatch, useAppSelector } from '../../hooks'
-import { handleBedroom, handleBathroom, handleAdult, handleChildren } from '../../redux/slices/searchSlice'
+import { handleBedroom, handleAdult, handleChildren } from '../../redux/slices/searchSlice'
 import handleQuant from '../../utils/handleQuantity'
 
 type Props = {
