@@ -8,6 +8,9 @@ import RequiredAuth from '../RequiredAuth'
 import LoginModal from '../components/login/LoginModal'
 import Blogs from '../pages/Blogs'
 import BlogScreen from '../pages/BlogScreen'
+import TermsAndConditions from '../pages/TermsAndConditions'
+import Contact from '../pages/Contact'
+import AboutUs from '../pages/AboutUs'
 
 function Layout() {
   // const {user} = useAppSelector(state=>state.user)
@@ -23,6 +26,9 @@ function Layout() {
           <Route path='/search' element={<Search />} />
           <Route path='/hotels/:id' element={<HotelScreen />} />
           <Route path='/blogs' element={<Blogs/>} />
+          <Route path='/terms' element={<TermsAndConditions/>} />
+          <Route path='/contact' element={<Contact/>} />
+          <Route path='/about' element={<AboutUs/>} />
           <Route path='/blogs/:id' element={<BlogScreen/>} />
         </Routes>
       </div>

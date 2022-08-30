@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks";
 import { signin } from "../../api/user";
 import { handleShowLogin } from "../../redux/slices/appSlice";
 import { MdOutlineCancel } from "react-icons/md";
-import { signinWithGoogle } from "../../utils/firebase";
+import { signinWithFacebook, signinWithGoogle } from "../../utils/firebase";
 
 
 const schema = yup.object().shape({
@@ -54,7 +54,7 @@ function Login({setShow}:Props) {
                 className="bg-white text-gray-800 font-normal px-5 py-3 rounded-xl outline-none focus:outline-none mr-2 mb-1 uppercase shadow-md hover:shadow-xl hover:bg-gray-light inline-flex items-center text-xs"
                 type="button"
                 style={{ transition: "all .15s ease" }}
-                onClick={()=>setShow('facebook')}
+                onClick={()=>signinWithFacebook(dispatch)}
               >
                 <img
                   alt="..."

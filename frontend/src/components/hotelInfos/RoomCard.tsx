@@ -1,4 +1,4 @@
-import { Checkbox } from 'antd'
+import { Checkbox, Radio, Space } from 'antd'
 import React from 'react'
 import { AiOutlineExclamationCircle } from 'react-icons/ai'
 import { MdOutlineChevronRight } from 'react-icons/md'
@@ -40,7 +40,7 @@ function RoomCard() {
           </div>
           <div className='px-4'>
             <p className=' border-t border-gray-light font-medium text-base'>Нэмэлт</p>
-            <ul className='flex flex-col gap-2 mt-2'>
+            {/* <ul className='flex flex-col gap-2 mt-2'>
               <li className='flex items-center justify-between'>
                 <Checkbox>Нэтэлт зүйлгүй</Checkbox>
                 <p>+₮0</p>
@@ -50,7 +50,23 @@ function RoomCard() {
                 <p>+₮30,000</p>
               </li>
               <li></li>
-            </ul>
+            </ul> */}
+            <Radio.Group className='py-2 w-full' defaultValue={1}>
+              <div>
+                <Radio value={1} className='w-full'>
+                  <li className='flex items-center justify-between'>
+                    <p>Нэтэлт зүйлгүй</p>
+                    <p>+₮0</p>
+                  </li>
+                </Radio>
+                <Radio value={2} className="w-full">
+                  <li className='flex items-center justify-between w-full'>
+                    <p>Өглөөний цай</p>
+                    <p>+₮30,000</p>
+                  </li>
+                </Radio>
+              </div>
+            </Radio.Group>
           </div>
         </div>
         <div className='flex justify-between items-end p-4'>

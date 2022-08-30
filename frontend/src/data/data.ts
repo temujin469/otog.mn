@@ -170,14 +170,15 @@ export const generateHotels = (num:number) => {
       county:faker.address.country(),
       amenities:amenities,
       lacation:{
-        long:2,
-        lat:3
+        long:Number(faker.address.longitude(108,107,2)),
+        lat:Number(faker.address.latitude(49,48,2))
       },
       region:regions[Math.floor(Math.random()* regions.length)],
       description:faker.lorem.paragraphs(5),
       rating:Math.floor(Math.random()* 5),
       review:Math.floor(Math.random()* 100),
-      id:Math.random()
+      id:(Math.random() +1).toString(36).substring(7),
+      price:Math.floor(Math.random()* 1000000)
        // amenitie:{
       //   Pe_Allowed:true,
       //   Pool:true,

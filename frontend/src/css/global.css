@@ -12,6 +12,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+a:hover {
+  color: white;
+}
+
 
 @layer components {
   .btn-border {
@@ -53,7 +57,7 @@ body {
   }
 
   .btn-primary>* {
-    @apply text-white hover:text-black
+    @apply text-white hover:text-white
   }
   .section {
     @apply p-2 rounded-lg min-h-[480px] flex flex-col justify-between mb-10

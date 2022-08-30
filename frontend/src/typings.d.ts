@@ -31,7 +31,8 @@ export type Hotel = {
     description: string;
     rating: number;
     review:number
-    id:number
+    price:number
+    id:string
 }
 
 export type HotelRegion = any

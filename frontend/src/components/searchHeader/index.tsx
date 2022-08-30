@@ -164,25 +164,25 @@ function SearchHeader({ fixed, withFilterRow }: any) {
           {/* row2 */}
           <div className='h-[50px] hidden md:flex border-b border-gray items-center gap-5 px-5 bg-white'>
             <div>
-              <button className='tag bg-primary text-white rounded-full py-3 px-3 md:py-1 md:px-3' onClick={() => handleOpen('6')}>
+              <button className='btn-primary text-white rounded-full py-2 px-3' onClick={() => handleOpen('6')}>
                 <GoSettings className='text-lg' /> <p className='hidden sm:block'>Шүүх & сортлох</p>
               </button>
               <Filter openFilter={openFilter} setOpenFilter={setOpenFilter} />
             </div>
             <div className='relative'>
-              <button className='tag text-gray-dark py-3 px-3 md:py-1 md:px-3' onClick={() => handleOpen('3')}>
+              <button className='tag text-gray-dark py-3 px-3 md:py-2 md:px-3' onClick={() => handleOpen('3')}>
                 <MdOutlineBedroomChild className='text-lg' /> <p className='hidden sm:block'>Өрөөнүүд</p>
               </button>
               <RoomOption openRoomOption={openRoomOption} setOpenRoomOption={setOpenRoomOption} />
             </div>
             <div className='relative'>
-              <button className='tag text-gray-dark py-3 px-3 md:py-1 md:px-3' onClick={() => handleOpen('4')}>
+              <button className='tag text-gray-dark py-3 px-3 md:py-2 md:px-3' onClick={() => handleOpen('4')}>
                 <RiPriceTag3Line className='text-lg' /> <p className='hidden sm:block'>Үнэ</p>
               </button>
               <PriceOption setOpenPriceOption={setOpenPriceOption} openPriceOption={openPriceOption} />
             </div>
             <div className='relative'>
-              <button className='tag text-gray-dark py-3 px-3 md:py-1 md:px-3' onClick={() => handleOpen('5')}>
+              <button className='tag text-gray-dark py-3 px-3 md:py-2 md:px-3' onClick={() => handleOpen('5')}>
                 <BiBuildingHouse className='text-lg' /> <p className='hidden sm:block'>Төрөл</p>
               </button>
               <HotelType openHotelType={openHotelType} setOpenHotelType={setOpenHotelType} />

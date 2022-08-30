@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithPopup,FacebookAuthProvider } from "firebase/auth";
 import { AppDispatch } from "../redux/slices/store";
 import { getUserSuccess } from "../redux/slices/userSlice";
 import { User } from "../typings";
@@ -25,9 +25,28 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
 const googleProvider = new GoogleAuthProvider();
+const facebookProvider = new FacebookAuthProvider();
 
 export const signinWithGoogle = (dispatch:AppDispatch) => {
   signInWithPopup(auth, googleProvider)
+    .then((result) => {
+      const user:User= {
+        name:result.user.displayName!,
+        id:result.user.uid,
+        phone:result.user.phoneNumber!,
+        email:result.user.email!,
+        accessToken:result.user.refreshToken
+      }
+
+      dispatch(getUserSuccess(user))
+    })
+    .catch((err) => {
+      alert(err);
+    });
+};
+
+export const signinWithFacebook = (dispatch:AppDispatch) => {
+  signInWithPopup(auth, facebookProvider)
     .then((result) => {
       const user:User= {
         name:result.user.displayName!,

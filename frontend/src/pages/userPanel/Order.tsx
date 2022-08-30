@@ -85,15 +85,16 @@ const rowSelection = {
 const Order: React.FC = () => {
   const [selectionType, setSelectionType] = useState<'checkbox' | 'radio'>('checkbox');
   return (
-    <div className=''>
-      <Table
-        rowSelection={{
-          type: selectionType,
-          ...rowSelection,
-        }}
-        columns={columns} dataSource={data}
-        className=""
-      />
+    <div className='overflow-x-scroll md:overflow-x-hidden'>
+      <div className='w-fit md:w-full'>
+        <Table
+          rowSelection={{
+            type: selectionType,
+            ...rowSelection,
+          }}
+          columns={columns} dataSource={data}
+        />
+      </div>
     </div>
   )
 }

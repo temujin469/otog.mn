@@ -39,7 +39,7 @@ function Filter({ setOpenFilter, openFilter }: Props) {
     <>
       {openFilter && (
         <div className=''>
-          <div className="absolute z-40 bg-black/50 w-full h-full hidden md:block left-0 top-0" onClick={() => setOpenFilter(false)}></div>
+          <div className="absolute z-40 bg-black/50 w-full h-screen hidden md:block left-0 top-0" onClick={() => setOpenFilter(false)}></div>
           <div className='overflow-y-scroll scrollbar-hide h-screen absolute border border-gray-light z-50 md:shadow-md justify-between left-0 md:left-[50%] md:translate-x-[-50%] flex flex-col md:block top-0 md:top-[50%] md:translate-y-[-50%] bg-white w-full scrollbar-hidden md:w-[600px] md:h-[calc(100vh-200px)] md:rounded-xl'>
             <div className='p-5 border-b border-gray-light flex justify-between items-center'>
               <h3 className='text-[16px] font-semibold'>Шүүлтүүр</h3>

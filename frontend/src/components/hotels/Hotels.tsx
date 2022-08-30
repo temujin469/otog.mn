@@ -1,15 +1,18 @@
 import React, { useState } from 'react'
-import { useAppSelector } from '../../hooks'
+import { useAppDispatch, useAppSelector } from '../../hooks'
 import HotelCard from './HotelCard';
 import { TbMapSearch } from 'react-icons/tb'
-import { Affix, Radio } from 'antd';
+import { Affix, Radio, Skeleton } from 'antd';
 import { GoSettings } from 'react-icons/go';
 import Filter from '../searcher/Filter';
+import { handleShowMap } from '../../redux/slices/appSlice';
 
 function Hotels() {
-  const { hotels } = useAppSelector(state => state.hotel);
+  const { hotels, loading } = useAppSelector(state => state.hotel);
   const { destination } = useAppSelector(state => state.search);
-  const [openFilter, setOpenFilter] = useState<boolean>(false)
+  const [openFilter, setOpenFilter] = useState<boolean>(false);
+  const dispatch = useAppDispatch()
+
 
   return (
     <div className=''>
@@ -25,7 +28,8 @@ function Hotels() {
                 <Filter openFilter={openFilter} setOpenFilter={setOpenFilter} />
               </div>
               <div>
-                <button className='btn-primary rounded-full'>
+                <button className='btn-primary rounded-full' onClick={() => dispatch(handleShowMap(true))}>
+                  <p className='hidden md:block'>Map дээр харах</p>
                   <TbMapSearch className='text-lg' />
                 </button>
               </div>
@@ -43,10 +47,13 @@ function Hotels() {
           </Radio.Group>
         </div>
       </Affix>
-      <div className='flex flex-col gap-5  sm:gap-4 p-3 sm:p-4 md:h-[calc(100vh-210px)] md:overflow-y-scroll'>
+      <div className='flex flex-col gap-5 bg-gray-light sm:gap-4 p-3 sm:p-4 md:h-[calc(100vh-210px)] md:overflow-y-scroll'>
         {
           hotels?.map(hotel => (
-            <HotelCard hotel={hotel} />
+            <Skeleton avatar title={true} loading={loading} active>
+              <HotelCard hotel={hotel} />
+            </Skeleton>
+
           ))
         }
       </div>

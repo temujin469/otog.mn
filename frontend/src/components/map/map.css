@@ -1,0 +1,21 @@
+.mapboxgl-popup-content  {
+  @apply p-1
+}
+button.mapboxgl-popup-close-button {
+  @apply text-lg h-10 w-10 flex justify-center bg-white items-center hover:text-primary hover:bg-white rounded-b-lg rounded-r-none;
+}
+.mapboxgl-popup-content {
+  @apply w-fit
+}
+
+.mapboxgl-popup-content {
+  @apply rounded-lg overflow-hidden
+}
+
+.pin .mapboxgl-popup-content {
+  @apply hover:bg-primary text-primary hover:text-white
+}
+
+.pin:hover > .mapboxgl-popup-tip {
+  border-top-color: #ff7849 !important;
+}

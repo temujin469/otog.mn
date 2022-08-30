@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React from 'react';
 import { MdOutlineCancel } from 'react-icons/md';
 import { Link } from 'react-router-dom';
@@ -23,13 +24,13 @@ const ProfilePopup = ({ showProfile, setShowProfile }: Props) => {
 
 
   return (
-    <div className={showProfile ? 'block' : 'hidden'}>
+    <div className={classNames({"hidden":!showProfile})}>
       <div>
-        <div className="nav-item border border-gray-light shadow-xl z-30 absolute right-[50%] translate-x-[50%] lg:right-0 lg:translate-x-0 top-16 bg-white text-textColor rounded-xl w-96">
+        <div className="nav-item border border-gray-light shadow-xl z-30 absolute right-4 left-4 lg:right-0 lg:translate-x-0 top-16 bg-white text-textColor rounded-xl lg:w-96">
           <div className="text-end">
             <button className='text-gray text-xl hover:shadow-lg hover:bg-gray-light rounded-full p-3 m-2' onClick={() => setShowProfile(false)}><MdOutlineCancel /></button>
           </div>
-          <div className='p-8 pt-0'>
+          <div className='md:p-8 p-4 pt-0'>
             <div className="flex gap-5 items-center border-gray-light border-b pb-6">
               <img
                 className="rounded-full h-20 w-20"

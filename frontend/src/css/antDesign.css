@@ -55,16 +55,18 @@ div .ant-select .ant-select-selector>.ant-select-selection-search >input.ant-sel
   @apply rounded-xl overflow-hidden
 }
 
-div.ant-radio-group .ant-radio-button-wrapper:first-child{
-  @apply rounded-l-xl
-}
-div.ant-radio-group .ant-radio-button-wrapper:last-child {
-  @apply rounded-r-xl
+.ant-radio-button-wrapper {
+  @apply rounded-r-xl md:rounded-none
 }
 
 div.ant-radio-group-solid .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
   @apply bg-primary border-none
 }
+
+div.ant-radio-group-solid .ant-radio-button-wrapper {
+  @apply bg-gray-light border-none
+}
+
 div.ant-radio-group-solid .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)::before {
   @apply bg-transparent
 }
@@ -72,4 +74,9 @@ div.ant-radio-group-solid .ant-radio-button-wrapper-checked:not(.ant-radio-butto
 
 div.ant-radio-group-solid .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled):hover {
   @apply bg-primary
+}
+
+
+span.ant-radio + * {
+  @apply w-full
 }

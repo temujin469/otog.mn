@@ -7,6 +7,7 @@ import Order from "./Order";
 import Profile from "./Profile";
 import Settings from "./Settings";
 import Header2 from "../../components/header/Header2";
+import Footer from "../../components/footer/Footer";
 
 const MainPage = () => {
   const [show, setShow] = useState(false)
@@ -18,12 +19,12 @@ const MainPage = () => {
   const menuLink = classNames("flex gap-5 rounded-xl p-4 hover:bg-gray-light cursor-pointer")
 
   return (
-    <div className=" h-screen overflow-hidden">
+    <div className=" h-screen overflow-y-scroll">
       <Header2/>
-      <div className="mt-[52px]">
-        <div className='grid md:grid-cols-9'>
-          <div className="md:col-span-6 overflow-y-scroll">
-            <main className="p-5">
+      <div className="mt-[52px] min-h-screen bg-gray-light md:bg-white">
+        <div className='md:grid grid-cols-9 flex flex-col-reverse'>
+          <div className="col-span-6 pb-10 overflow-hidden">
+            <main className="p-4">
               <Routes>
                 <Route index element={<Profile />} />
                 <Route path="/orders" element={<Order />} />
@@ -31,7 +32,7 @@ const MainPage = () => {
               </Routes>
             </main>
           </div>
-          <div className="md:col-span-3 shadow-lg h-screen w-full">
+          <div className="col-span-3 bg-white">
             <ul className="flex flex-col gap-2 p-4">
               {userProfileData.map((item, index) => (
                 <Link to={item.link} key={index} onClick={()=>isActiveLink(item.link)} className={menuLink}>
@@ -53,6 +54,7 @@ const MainPage = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
 
   );

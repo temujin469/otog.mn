@@ -3,10 +3,12 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 
 interface AppState {
   showLogin: boolean;
+  showMap:boolean
 }
 
 const initialState: AppState = {
   showLogin: false,
+  showMap:false
 };
 
 export const appSlice = createSlice({
@@ -17,11 +19,15 @@ export const appSlice = createSlice({
     handleShowLogin: (state, action: PayloadAction<boolean>) => {
       state.showLogin = action.payload;
     },
+    handleShowMap:(state,action: PayloadAction<boolean>) => {
+      state.showMap = action.payload;
+    }
   },
 });
 
 export const {
-  handleShowLogin
+  handleShowLogin,
+  handleShowMap
 } = appSlice.actions;
 
 export default appSlice.reducer;
