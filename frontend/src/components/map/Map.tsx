@@ -6,6 +6,7 @@ import PopupHotel from './PopupHotel';
 import classNames from 'classnames';
 import { Hotel } from '../../typings';
 
+
 type Props = {
   hotels: Hotel[]
 }
