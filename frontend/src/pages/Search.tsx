@@ -20,7 +20,6 @@ function Search() {
   const { hotels } = useAppSelector(state => state.hotel)
   const [openFilter, setOpenFilter] = useState(false)
   const dispatch = useAppDispatch()
-  // const {amenities} = useAppSelector(state=>state.)
 
   useEffect(() => {
     const fetchData = async () => {
