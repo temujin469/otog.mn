@@ -5,6 +5,7 @@ import './map.css'
 import PopupHotel from './PopupHotel';
 import classNames from 'classnames';
 import { Hotel } from '../../typings';
+import NumberFormat from 'react-number-format';
 
 
 type Props = {
@@ -13,8 +14,8 @@ type Props = {
 
 const Mapbox = ({ hotels }: Props) => {
   const [viewState, setViewState] = React.useState({
-    latitude: 46.8625,
-    longitude: 103.8467,
+    latitude: 47.9225,
+    longitude: 107.009,
   });
   const [clickedHotel, setClickedHotel] = useState<string | null>(null)
 
@@ -30,9 +31,7 @@ const Mapbox = ({ hotels }: Props) => {
     <Map
       {...viewState}
       initialViewState={{
-        zoom: 4,
-        latitude: 46.8625,
-        longitude: 103.8467,
+        zoom: 9,
       }}
       onMove={evt => !clickedHotel && setViewState(evt.viewState)}
       mapStyle="mapbox://styles/temujin469/cl7g1z4p2001114nyga575att"
@@ -51,9 +50,10 @@ const Mapbox = ({ hotels }: Props) => {
               longitude={hotel.lacation.long}
               latitude={hotel.lacation.lat}
               closeButton={false}
-              className={classNames('pin cursor-pointer p-0 hover:z-10', { "hidden": hotel.id === clickedHotel })}>
+              className={classNames('pin cursor-pointer p-0 hover:z-10 select-none', { "hidden": hotel.id === clickedHotel })}>
               <p onClick={() => handleClick(hotel.lacation.lat, hotel.lacation.long, hotel.id)}>
-                {`₮${hotel.price}`}
+                <NumberFormat value={hotel.price} displayType={'text'}
+                  thousandSeparator={true} />₮
               </p>
             </Popup>
             {hotel.id === clickedHotel && (

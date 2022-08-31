@@ -25,8 +25,8 @@ const ProfilePopup = ({ showProfile, setShowProfile }: Props) => {
 
   return (
     <div className={classNames({"hidden":!showProfile})}>
-      <div>
-        <div className="nav-item border border-gray-light shadow-xl z-30 absolute right-4 left-4 lg:right-0 lg:translate-x-0 top-16 bg-white text-textColor rounded-xl lg:w-96">
+      <div onMouseLeave={() => setShowProfile(false)}>
+        <div className="nav-item border border-gray-light shadow-xl z-30 absolute right-4 left-4 md:left-auto md:right-0 top-16 bg-white text-textColor rounded-xl md:w-96">
           <div className="text-end">
             <button className='text-gray text-xl hover:shadow-lg hover:bg-gray-light rounded-full p-3 m-2' onClick={() => setShowProfile(false)}><MdOutlineCancel /></button>
           </div>

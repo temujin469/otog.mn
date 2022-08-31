@@ -143,7 +143,7 @@ function Footer() {
                 <a href="#!" className="footer-link">Захиалга цуцлах</a>
               </li>
               <li>
-                <p onClick={()=>dispatch(handleShowLogin(true))} className="footer-link cursor-pointer">Хэрэглэгчээр бүртгүүлэх</p>
+                <p onClick={() => dispatch(handleShowLogin(true))} className="footer-link cursor-pointer">Хэрэглэгчээр бүртгүүлэх</p>
               </li>
               <li>
                 <a href="#!" className="footer-link">Түгээмэл асуултууд</a>
@@ -157,9 +157,15 @@ function Footer() {
         </div>
       </div>
 
-      <div className="text-center text-gray-dark/30 pb-6 pt-4">
-        © 2022
-        <a className="text-gray-dark/30" href="#"> Global Vision LLC</a>
+      <div className="text-center bg-primary text-gray-dark/40 py-5">
+        <div className='container flex justify-between items-center'>
+          <p className=' text-white'>
+            © 2022 Отог Платформ
+          </p>
+          <div>
+            <img src='https://www.tridum.mn/templates/images/develop.png' className='w-[77px]' alt="logo"/>
+          </div>
+        </div>
       </div>
     </footer>
   )

@@ -21,7 +21,7 @@ const MainPage = () => {
   return (
     <div className=" h-screen overflow-y-scroll">
       <Header2/>
-      <div className="mt-[52px] min-h-screen bg-gray-light md:bg-white">
+      <div className="mt-[52px] min-h-screen container bg-gray-light md:bg-white">
         <div className='md:grid grid-cols-9 flex flex-col-reverse'>
           <div className="col-span-6 pb-10 overflow-hidden">
             <main className="p-4">

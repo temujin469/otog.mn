@@ -10,10 +10,10 @@ export default function Blogs() {
     <div>
       <Header2 />
       <div className='mt-[52px] relative mb-24'>
-        <div className="w-full h-[500px] md:h-[600px] bg-[url('https://images.pexels.com/photos/414102/pexels-photo-414102.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-cover bg-no-repeat bg-[#024F6B] bg-center bg-fixed">
-          <div className='container h-full flex items-center justify-center'>
-            <img className=" absolute  top-10 cursor-pointer w-[70px]" alt="Logo" src="/logo/logo.png" />
-            <h1 className="heading-xl text-white">Аялалын талаар таны мэдлэгт (блог)</h1>
+        <div className="w-full h-[500px] md:h-[600px] bg-[url('https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1https://images.pexels.com/photos/414102/pexels-photo-414102.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-cover bg-no-repeat bg-[#024F6B] bg-center bg-fixed">
+          <div className='container h-full flex flex-col items-center justify-center'>
+            <h1 className="heading-xl xl:text-[45px] text-white">Блог</h1>
+            <h2 className="heading-lg text-white">Аялалын талаар таны мэдлэгт</h2>
           </div>
         </div>
         <div className="md:w-[80%] xxl:w-[70%] w-full m-auto bg-white mt-[-42px] justify-center md:p-[25px] flex rounded-t-[40px]">

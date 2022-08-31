@@ -33,7 +33,7 @@ function DatePicker({ openDate, setOpenDate }: Props) {
 
   return (
     <div className={openDate ? "block" : "hidden"}>
-      <div className=''>
+      <div>
         <div className='absolute border h-screen border-gray-light md:shadow-md flex md:block flex-col md:rounded-xl top-0 left-0 w-full md:h-auto md:w-auto z-[1000] md:top-[70px] md:left-[50%] md:translate-x-[-50%] bg-white'>
           <div className='md:hidden bg-gray-light'>
             <div className='gap-2 shadow-sm bg-white rounded-xl flex items-center justify-center p-4 m-5'>

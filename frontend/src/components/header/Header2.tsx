@@ -31,7 +31,7 @@ function Header2() {
     user ? setShowProfile(!showProfile) : dispatch(handleShowLogin(true))
   }
 
-  const linkStyle = classNames('text-textClr cursor-pointer flex items-center gap-1 text-base px-3 py-1 rounded-md hover:bg-black/10')
+  const linkStyle = classNames('text-textClrn relative cursor-pointer flex items-center text-base px-3 py-1 rounded-md hover:bg-black/10')
 
   const  headerStyle = classNames("fixed top-0 w-full flex items-center shadow-md bg-white z-50 left-0 py-2 px-10 h-[52px]")
 

@@ -24,7 +24,7 @@ function Home() {
   }, [])
 
   return (
-    <div className='h-screen overflow-y-scroll'>
+    <div className='h-screen overflow-y-scroll overflow-hidden'>
       <TopSection />
       <HotelCategory />
       <Amenitie />

@@ -60,7 +60,7 @@ a:hover {
     @apply text-white hover:text-white
   }
   .section {
-    @apply p-2 rounded-lg min-h-[480px] flex flex-col justify-between mb-10
+    @apply p-2 rounded-lg h-[500px]  lg:h-[600px] flex flex-col justify-between mb-10
   }
 }
 
