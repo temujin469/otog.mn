@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Map, { Popup } from 'react-map-gl';
 import "mapbox-gl/dist/mapbox-gl.css";
-import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import './map.css'
 import PopupHotel from './PopupHotel';
 import classNames from 'classnames';
