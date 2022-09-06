@@ -24,7 +24,7 @@ function Search() {
   const dispatch = useAppDispatch()
 
   const navigate = useNavigate();
-  const {search}= useLocation();
+  const { search } = useLocation();
   const sp = new URLSearchParams(search); // /search?category=Shirts
   const adult = sp.get('adult')
   const arrival = sp.get('arrival') || 'all';
@@ -75,7 +75,8 @@ function Search() {
                 </button>
               </div>
             </div>
-            <Mapbox hotels={hotels as Hotel[]} />
+            {/* <Mapbox hotels={hotels as Hotel[]} /> */}
+            <GoogleMap />
             <Filter openFilter={openFilter} setOpenFilter={setOpenFilter} />
           </div>
         ) : (
@@ -89,7 +90,7 @@ function Search() {
                 <div className={classNames('col-span-5 hidden xl:block h-[calc(100vh-110px)]')}>
                   <div className='h-[60%]'>
                     {/* <Mapbox hotels={hotels as Hotel[]} /> */}
-                    <GoogleMap/>
+                    <GoogleMap />
                   </div>
                   <div className='h-[40%]'>
                     <Advertising />
