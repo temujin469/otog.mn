@@ -38,7 +38,7 @@ function Header({mode}:{mode?:"1"|"2"}) {
   return (
     <nav className={headerStyle}>
       <div className="flex justify-between items-center mx-auto">
-        <Link to="/" className="flex items-center px-4">
+        <Link to="/" className="flex items-center p-1">
           <img src="/logo/Otog logo white.png" className="sm:h-[50px] h-[30px]" alt="Flowbite Logo" />
         </Link>
         <button onClick={handleSidebar} className="sm:hidden p-3 text-white rounded-md hover:bg-black/20">
