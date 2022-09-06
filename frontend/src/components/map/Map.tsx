@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import Map, { Popup } from 'react-map-gl';
-
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './map.css'
 import PopupHotel from './PopupHotel';
 import classNames from 'classnames';
 import { Hotel } from '../../typings';
 import NumberFormat from 'react-number-format';
+
+
+
 
 
 type Props = {
