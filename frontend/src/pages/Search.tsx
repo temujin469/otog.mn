@@ -75,8 +75,8 @@ function Search() {
                 </button>
               </div>
             </div>
-            {/* <Mapbox hotels={hotels as Hotel[]} /> */}
-            <GoogleMap />
+            <Mapbox hotels={hotels as Hotel[]} />
+            {/* <GoogleMap /> */}
             <Filter openFilter={openFilter} setOpenFilter={setOpenFilter} />
           </div>
         ) : (
