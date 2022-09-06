@@ -26,7 +26,7 @@ import HotelType from '../searcher/HotelType'
 
 function SearchHeader({ fixed, withFilterRow }: any) {
   const search = useAppSelector(state => state.search)
-  const [destination,setDestination] = useState(search.destination)
+  const [destination, setDestination] = useState(search.destination)
 
   const [openDate, setOpenDate] = useState(false);
   const [openOptions, setOpenOptions] = useState<boolean>(false);
@@ -45,7 +45,7 @@ function SearchHeader({ fixed, withFilterRow }: any) {
 
   const dispatch = useAppDispatch()
 
- const handleSearch = (e:any) => {
+  const handleSearch = (e: any) => {
     dispatch(handleDestination(destination as string))
     e.preventDefault()
   };
@@ -107,7 +107,7 @@ function SearchHeader({ fixed, withFilterRow }: any) {
           <div className='border-gray md:border-r py-2 md:py-0 flex justify-between items-center md:h-full'>
             <div className='md:px-5'>
               <Link to='/'>
-                <img src="/logo/logo.png" className="h6 sm:h-9" alt="otog logo" />
+                <img src="/logo/otog-logo-black.png" className="md:h-[40px] h-[25px] object-contain" alt="Flowbite Logo" />
               </Link>
             </div>
             <button onClick={handleShow} className="sm:hidden text-primary p-2 rounded-md hover:bg-black/10">
@@ -116,11 +116,11 @@ function SearchHeader({ fixed, withFilterRow }: any) {
           </div>
 
 
-          <div  className='border shadow-md bg-white md:shadow-none border-gray md:border-none rounded-lg md:rounded-none md:p-0 flex flex-col md:flex-row divide-y md:divide-x md:divide-y-0'>
+          <div className='border shadow-md bg-white md:shadow-none border-gray md:border-none rounded-lg md:rounded-none md:p-0 flex flex-col md:flex-row divide-y md:divide-x md:divide-y-0'>
             <form onSubmit={handleSearch} className='border-gray lg:min-w-[500px] md:h-full rounded-t-lg overflow-hidden'>
               <div className='hover:bg-gray-light h-full flex items-center gap-2 p-3'>
                 <BsSearch className='text-[20px] text-gray' />
-                <input placeholder='Хайх газрын нэрээ оруулна уу?' onChange={(e)=>setDestination(e.target.value)} value={destination} className='outline-none font-mediun w-full h-full place bg-transparent' />
+                <input placeholder='Хайх газрын нэрээ оруулна уу?' onChange={(e) => setDestination(e.target.value)} value={destination} className='outline-none font-mediun w-full h-full place bg-transparent' />
               </div>
             </form>
 

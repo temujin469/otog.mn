@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { useNavigate } from "react-router-dom";
 import { BsPerson, BsSearch } from 'react-icons/bs'
 import { MdDateRange } from 'react-icons/md'
 import { VscArrowBoth } from 'react-icons/vsc'
@@ -7,8 +6,8 @@ import { format } from "date-fns";
 
 import Option from './Option';
 import DatePicker from './DatePicker';
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { handleDestination } from '../../redux/slices/searchSlice';
+import { useAppSelector } from '../../hooks';
+// import { handleDestination } from '../../redux/slices/searchSlice';
 import { Link } from 'react-router-dom';
 
 
@@ -74,11 +73,11 @@ function Searcher() {
         </div>
         <div className='py-1 px-1 border-none h-[69px]'>
           <div className='hover:bg-gray-light h-full rounded-xl overflow-hidden'>
-            <button className="h-full w-full md:w-[110px] bg-primary font-medium text-white">
-              <Link to={filterUrl()}>
+            <Link to={filterUrl()}>
+              <button className="h-full w-full md:w-[110px] bg-primary font-medium text-white">
                 Хайх
-              </Link>
-            </button>
+              </button>
+            </Link>
           </div>
         </div>
       </div>

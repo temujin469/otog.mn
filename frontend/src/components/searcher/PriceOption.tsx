@@ -1,5 +1,4 @@
 import { Slider } from 'antd'
-import Search from 'antd/lib/transfer/search'
 import React, { useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../hooks'
 import { handlePriceRange } from '../../redux/slices/searchSlice'
