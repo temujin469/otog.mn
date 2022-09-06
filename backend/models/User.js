@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 const bcrypt = require("bcryptjs");
+const crypto = require('crypto')
 const jwt = require('jsonwebtoken')
 
 const { Schema } = mongoose;
@@ -43,8 +44,10 @@ const UserSchema = new Schema(
     },
     emailToken: {
       type:String,
-      select:false
-
+      // select:false
+    },
+    emailTokenExpire:{
+      type:Date,
     },
     role: {
       type: String,
@@ -65,19 +68,18 @@ UserSchema.pre("save", async function () {
   this.password = await bcrypt.hash(this.password, salt);
 });
 
-// UserSchema.pre("save", async function () {
-//   // console.log(this.modifiedPaths());
-//   // console.log(this.isModified('name'));
-//   if (!this.isModified("password")) return;
-//   const salt = await bcrypt.genSalt(10);
-//   this.password = await bcrypt.hash(this.password, salt);
-// });
-
-
 UserSchema.methods.comparePassword = async function (canditatePassword) {
   const isMatch = await bcrypt.compare(canditatePassword, this.password);
   return isMatch;
 };
+
+// UserSchema.methods.createEmailToken = function () {
+//   const emailToken = crypto.randomBytes(20).toString('hex');
+//   this.emailToken = emailToken;
+//   this.emailTokenExpire = Date.now() + 10 * 60 * 100;
+//   return emailToken;
+// };
+
 
 UserSchema.methods.createJWT = function () {
     const token = jwt.sign({userId:this._id,role:this.role},process.env.JWT_SECRET,{

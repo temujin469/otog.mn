@@ -1,4 +1,4 @@
-import {  useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import { BsPerson, BsSearch } from 'react-icons/bs'
 import { MdDateRange } from 'react-icons/md'
@@ -9,23 +9,23 @@ import Option from './Option';
 import DatePicker from './DatePicker';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { handleDestination } from '../../redux/slices/searchSlice';
+import { Link } from 'react-router-dom';
 
 
 
 function Searcher() {
   const search = useAppSelector(state => state.search)
-  const [destination,setDestination] = useState(search.destination)
+  const [destination, setDestination] = useState(search.destination)
   const [openDate, setOpenDate] = useState(false);
   const [openOptions, setOpenOptions] = useState<boolean>(false);
 
-  const dispatch = useAppDispatch()
+  // const handleSearch = () => {
+  //   dispatch(handleDestination(destination as string))
+  //   navigate(`/search/${search.destination}?adults=${search.adult}&arrivel=${format(search.date[0].startDate, "MM/dd/yyyy")}`);
+  // };
 
-  const navigate = useNavigate();
-
-
-  const handleSearch = () => {
-    dispatch(handleDestination(destination as string))
-    navigate("/search");
+  const filterUrl = () => {
+    return `/search?location=${destination}&adult=${search.adult}&arrival=${format(search.date[0].startDate, "MM/dd/yyyy")}&duration=${5}&bedroom=${search.bedroom}&children=${search.children}`;
   };
 
   const handleOpen = (id: "date" | "option") => {
@@ -44,7 +44,7 @@ function Searcher() {
         <div className='p-1 border-gray-light md:flex-[1] h-[69px]'>
           <div className='hover:bg-gray-light h-full rounded-xl flex items-center gap-2 p-3'>
             <BsSearch className='text-[20px] text-gray' />
-            <input onChange={(e)=>setDestination(e.target.value)} value={destination} placeholder='Хайх газрын нэрээ оруулна уу?' className='outline-none font-medium w-full h-full place bg-transparent' />
+            <input onChange={(e) => setDestination(e.target.value)} value={destination} placeholder='Хайх газрын нэрээ оруулна уу?' className='outline-none font-medium w-full h-full place bg-transparent' />
             {/* <AutoComplete
               style={{ width: 200 }}
               className="outline-none font-medium w-full h-full place bg-transparent bg-none"
@@ -74,8 +74,10 @@ function Searcher() {
         </div>
         <div className='py-1 px-1 border-none h-[69px]'>
           <div className='hover:bg-gray-light h-full rounded-xl overflow-hidden'>
-            <button className="h-full w-full md:w-[110px] bg-primary font-medium text-white" onClick={handleSearch}>
-              Хайх
+            <button className="h-full w-full md:w-[110px] bg-primary font-medium text-white">
+              <Link to={filterUrl()}>
+                Хайх
+              </Link>
             </button>
           </div>
         </div>

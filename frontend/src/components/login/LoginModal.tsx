@@ -22,7 +22,7 @@ function LoginModal() {
 
   return (
     <div className={isShow}>
-      <div className="absolute h-screen overflow-hidden bottom-0 z-40 bg-black/50 w-full left-0 top-0" onClick={() => dispatch(handleShowLogin(false))}></div>
+      <div className="absolute h-screen overflow-hidden bottom-0 z-40 bg-black/60 w-full left-0 top-0" onClick={() => dispatch(handleShowLogin(false))}></div>
       {handleShow()}
     </div>
 

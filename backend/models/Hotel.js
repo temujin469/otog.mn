@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
-
 const RoomInfo = new Schema({
   roomName: {
     type: String,
@@ -55,8 +54,7 @@ const RoomInfo = new Schema({
       },
     },
   ],
-})
-
+});
 
 const GeneralInfo = new Schema({
   hotelName: {
@@ -89,7 +87,11 @@ const GeneralInfo = new Schema({
     type: Date,
     required: true,
   },
-})
+  location:{
+    type:String,
+    required:true
+  }
+});
 
 // const PricingInfo = new Schema({
 //   flexible:{
@@ -100,46 +102,54 @@ const GeneralInfo = new Schema({
 // })
 
 const HotelSchema = new Schema({
-
-  // Байр, сууцны бүртгэл ,Ерөнхий мэдээлэл 
+  // Байр, сууцны бүртгэл ,Ерөнхий мэдээлэл
   generalInfo: {
-    type:GeneralInfo,
+    type: GeneralInfo,
     required: true,
   },
 
   // Байр, сууцны бүртгэл,Өрөөний мэдээлэл
   roomInfo: {
-    type:[RoomInfo],
+    type: [RoomInfo],
   },
 
   // Байр, сууцны бүртгэл,Үнийн мэдэээлэл
-  pricingInfo:{
-    type:[PricingInfo]
+  // pricingInfo:{
+  //   type:[PricingInfo]
+  // },
+
+  createdBy: {
+    type: Schema.Types.ObjectId,
+    ref:'users',
+    required: true,
   },
-  
-  opinions: [
-    {
-      fullname: {
-        type: String,
-        required: true,
-      },
-      text: {
-        type: String,
-        required: true,
-      },
-      rating: {
-        type: Number,
-        required: true,
-      },
-      date: {
-        type: Date,
-        default: new Date(),
-      },
-    },
-  ],
+  updatedBy: {
+    type: Schema.Types.ObjectId,
+    ref:'users',
+    required: true,
+  },
+
+  // opinions: [
+  //   {
+  //     fullname: {
+  //       type: String,
+  //       required: true,
+  //     },
+  //     text: {
+  //       type: String,
+  //       required: true,
+  //     },
+  //     rating: {
+  //       type: Number,
+  //       required: true,
+  //     },
+  //     date: {
+  //       type: Date,
+  //       default: new Date(),
+  //     },
+  //   },
+  // ],
 });
 
- const Hotel = mongoose.model("hotels", HotelSchema);
- module.exports = Hotel;
-
-
+const Hotel = mongoose.model("hotels", HotelSchema);
+module.exports = Hotel;

@@ -2,31 +2,27 @@ const nodemailer = require("nodemailer");
 
 module.exports = async (email, subject, text) => {
   try {
-    let testAccount = await nodemailer.createTestAccount();
 
     const transporter = nodemailer.createTransport({
-      host: "smtp.ethereal.email", //process.env.EMAIL_HOST,
+      host:process.env.SMTP_HOST,
       // service:process.env.EMAIL_SERVICE,
-      port: Number(process.env.EMAIL_PORT),
+      port: Number(process.env.SMTP_PORT),
       secure: false,
       auth: {
-        // user:process.env.EMAIL_USER,
-        // pass:process.env.EMAIL_PASS
-        user: testAccount.user,
-        pass: testAccount.pass,
+        user:process.env.SMTP_USER,
+        pass:process.env.SMTP_PASS
       },
     });
 
    const info = await transporter.sendMail({
-      from: process.env.EMAIL_USER,
+      from: process.env.FROM_USER,
       to: email,
       subject: subject,
       text: text,
-      html: "<b>Hello world?</b>",
+      html: `<a href='${text}'>batalgaajuulgh</a>`,
     });
 
     console.log("Message sent: %s", info.messageId);
-    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
 
     console.log("Имайл амжилттай илгээгдсэн");
   } catch (err) {

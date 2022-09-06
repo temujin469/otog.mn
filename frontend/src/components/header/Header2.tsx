@@ -5,11 +5,9 @@ import { AiOutlineGlobal } from 'react-icons/ai'
 import classNames  from 'classnames'
 import Sidebar from './Sidebar';
 import './navbar.css'
-// import { Select } from 'antd';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import ProfilePopup from '../ProfilePopup';
 import { handleShowLogin } from '../../redux/slices/appSlice';
-// const { Option } = Select;
 
 
 function Header2() {

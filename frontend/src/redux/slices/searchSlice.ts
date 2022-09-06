@@ -15,10 +15,7 @@ interface SearchState {
   adult: number;
   bedroom: number;
   bathroom: number;
-  price: {
-    lt: number;
-    gt: number;
-  } | null;
+  priceRange:number[]
   hotelType: string[] | null;
   amenities: string[] | null;
 }
@@ -34,7 +31,7 @@ const initialState: SearchState = {
   adult: 1,
   bedroom: 1,
   bathroom: 0,
-  price: null,
+  priceRange:[0,1000000],
   hotelType: null,
   amenities: null,
   children: 0,
@@ -63,6 +60,9 @@ export const searchSlice = createSlice({
     handleDestination: (state, action: PayloadAction<string>) => {
       state.destination = action.payload;
     },
+    handlePriceRange: (state, action: PayloadAction<number[]>) => {
+      state.priceRange = action.payload;
+    },
   },
 });
 
@@ -73,6 +73,7 @@ export const {
   handleAdult,
   handleChildren,
   handleBathroom,
+  handlePriceRange
 } = searchSlice.actions;
 
 export default searchSlice.reducer;

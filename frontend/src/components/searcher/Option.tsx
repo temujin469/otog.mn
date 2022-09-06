@@ -13,42 +13,12 @@ type Props = {
   
 }
 
-// handleChildren: (state, action: PayloadAction<"nemeh" | "hasah">) => {
-//   if (action.payload === "nemeh") {
-//     state.children += 1;
-//   } else {
-//     state.children -= 1;
-//   }
-// },
-// handleAdult: (state, action: PayloadAction<"nemeh" | "hasah">) => {
-//   if (action.payload === "nemeh") {
-//     state.adult += 1;
-//   } else {
-//     state.adult -= 1;
-//   }
-// },
-// handleBedroom: (state, action: PayloadAction<"nemeh" | "hasah">) => {
-//   if (action.payload === "nemeh") {
-//     state.bedRoom += 1;
-//   } else {
-//     state.bedRoom -= 1;
-//   }
-// },
-// handleBathroom: (state, action: PayloadAction<"nemeh" | "hasah">) => {
-//   if (action.payload === "nemeh") {
-//     state.bathRoom += 1;
-//   } else {
-//     state.bathRoom -= 1;
-//   }
-// },
-
 function Option({setOpenOptions, openOptions }: Props) {
   const search = useAppSelector(state=>state.search)
   const [children,setChildren] = useState(search.children)
   const [adult,setAdult] = useState(search.adult)
   const [bedroom,setBedroom] = useState(search.bedroom)
   const dispatch = useAppDispatch()
-
 
 
   const handleSearch = () => {
@@ -63,6 +33,7 @@ function Option({setOpenOptions, openOptions }: Props) {
     setAdult(search.adult)
     setBedroom(search.bedroom)
   }
+
   return (
     <>
       {openOptions && (
@@ -74,7 +45,7 @@ function Option({setOpenOptions, openOptions }: Props) {
                 <p className='font-medium text-lg'>{`Хүний тоо ${adult + children}`}</p>
               </div>
             </div>
-            <div className="flex flex-col gap-5 p-5">
+            <div className="flex flex-col gap-3 p-5">
               <div className="flex items-center justify-between">
                 <div className="font-medium flex items-center gap-2">
                   <FaRegUser className="text-xl" />

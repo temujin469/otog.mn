@@ -35,7 +35,7 @@ function Sidebar({ show, handleShow }: Props) {
               <BiUserCircle className='text-xl' />
               <p>{user ? user.name : "Tаны профайл"}</p>
             </div>
-            <div className={`${showProfile && 'w-full bg-black/30 absolute left-0 top-0 bottom-0 right-0'} `}>
+            <div className={`${showProfile && 'w-full bg-black/60 absolute left-0 top-0 bottom-0 right-0'} `}>
               <ProfilePopup showProfile={showProfile} setShowProfile={setShowProfile} />
             </div>
           </li>

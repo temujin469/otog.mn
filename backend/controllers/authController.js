@@ -1,5 +1,5 @@
 const User = require("../models/User");
-const sha256 = require("crypto-js/sha256");
+const crypto = require('crypto');
 const asyncHandler = require("express-async-handler");
 const { StatusCodes } = require("http-status-codes");
 const CustomError = require("../customErrors");
@@ -12,13 +12,12 @@ const register = asyncHandler(async (req, res, next) => {
     throw new CustomError.BadRequestError("Имэйл аль хэдийн бүртгэгдсэн байна");
   }
 
-  const emailToken = sha256("$12hw");
-  await User.create({ ...req.body, emailToken });
-  const user = await User.findOne({ email: req.body.email });
+  const emailToken = crypto.randomBytes(20).toString('hex');
+  const emailTokenExpire = Date.now() + 10 * 60 * 1000;
+  const user = await User.create({...req.body,emailToken,emailTokenExpire});
   const accessToken = user.createJWT();
 
-  // attachCookiesToResponse(res, jwt);
-  const url = `${process.env.BASE_URL}/api/v1/users/${user._id}/verify/${user.emailToken}`;
+  const url = `${process.env.BASE_URL}/api/v1/auth/${user._id}/verify/${emailToken}`;
 
   // herglechrvv email ywuulah
   await sendEmail(user.email, "Бүртгэлээ баталгаажуулах", url);
@@ -40,31 +39,26 @@ const register = asyncHandler(async (req, res, next) => {
 
 // email batalgaajuulah
 const verifyEmail = asyncHandler(async (req, res, next) => {
-  const user = await User.findOne({ _id: req.params.id });
-  const emailToken = await User.findOne({ emailToken: req.params.token });
+  const user = await User.findOne({
+    _id: req.params.id,
+    emailToken: req.params.token,
+    // emailTokenExpire: { $gt: Date.now() },
+  });
   // check user token is valid
-  if (token && user) {
-    const verifiedUser = await User.updateOne({
-      _id: user.id,
-      verified: true,
-    });
-
-    res.status(StatusCodes.CREATED).json({
-      success: true,
-      message:"Имайл амжилттай баталгаажлаа",
-      user: {
-        id: user.id,
-        name: user.name,
-        phone: user.phone,
-        email: user.email,
-        county: user.country,
-        verified: user.verified,
-        emailToken,
-      },
-    });
-  } else {
-    throw new CustomError.BadRequestError("Хүчингүй линк");
+  if (!user) {
+    throw new CustomError.BadRequestError("token hvchingvi");
   }
+
+  user.verified = true
+  user.emailToken = undefined;
+  user.emailTokenExpire = undefined;
+  user.save();
+
+  res.status(StatusCodes.CREATED).json({
+    success: true,
+    message: "Имайл амжилттай баталгаажлаа",
+    user,
+  });
 });
 
 // login

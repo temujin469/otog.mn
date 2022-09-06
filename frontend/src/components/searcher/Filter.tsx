@@ -5,7 +5,7 @@ import { FaRegUser } from 'react-icons/fa'
 import { MdChildCare, MdOutlineBedroomChild, MdOutlineCancel } from 'react-icons/md'
 import { amenities, hotelTypes } from '../../data/data'
 import { useAppDispatch, useAppSelector } from '../../hooks'
-import { handleBedroom, handleAdult, handleChildren } from '../../redux/slices/searchSlice'
+import { handleBedroom, handleAdult, handleChildren, handlePriceRange } from '../../redux/slices/searchSlice'
 import handleQuant from '../../utils/handleQuantity'
 
 type Props = {
@@ -16,6 +16,7 @@ type Props = {
 function Filter({ setOpenFilter, openFilter }: Props) {
   const search = useAppSelector(state => state.search)
   const [bedroom, setBedroom] = useState(search.bedroom)
+  const [priceRange, setPriceRange] = useState(search.priceRange)
   const [bathroom, setBathroom] = useState(search.bathroom)
   const [adult, setAdult] = useState(search.adult)
   const [children, setChildren] = useState(search.children)
@@ -26,21 +27,27 @@ function Filter({ setOpenFilter, openFilter }: Props) {
     dispatch(handleChildren(children))
     dispatch(handleAdult(adult))
     dispatch(handleBedroom(bedroom))
-    setOpenFilter(false)
+    dispatch(handlePriceRange(priceRange))
+    setOpenFilter(false) 
   }
 
   const resetSearch = () => {
     setChildren(search.children)
     setAdult(search.adult)
+    setPriceRange(search.priceRange)
     setBedroom(search.bedroom)
     setOpenFilter(false)
   }
+
+  const isModified = bedroom !== search.bedroom || bathroom !== search.bathroom || adult !== search.adult || children !== search.children || priceRange !== search.priceRange
+
   return (
     <>
       {openFilter && (
         <div className=''>
-          <div className="absolute z-40 bg-black/50 w-full h-screen hidden md:block left-0 top-0" onClick={() => setOpenFilter(false)}></div>
-          <div className='overflow-y-scroll scrollbar-hide h-screen absolute border border-gray-light z-50 md:shadow-md justify-between left-0 md:left-[50%] md:translate-x-[-50%] flex flex-col md:block top-0 md:top-[50%] md:translate-y-[-50%] bg-white w-full scrollbar-hidden md:w-[600px] md:h-[calc(100vh-200px)] md:rounded-xl'>
+          <div className="absolute z-40 bg-black/60 w-full h-screen hidden md:block left-0 top-0" onClick={() => setOpenFilter(false)}>
+          </div>
+          <div className='overflow-y-scroll scrollbar-hide h-screen absolute border border-gray-light z-50 md:shadow-md justify-between left-0 md:left-[50%] md:translate-x-[-50%] flex flex-col md:block top-0 md:top-[50%] md:translate-y-[-50%] bg-white w-full scrollbar-hidden md:w-[600px] md:h-[calc(100vh-80px)] md:rounded-xl'>
             <div className='p-5 border-b border-gray-light flex justify-between items-center'>
               <h3 className='text-[16px] font-semibold'>Шүүлтүүр</h3>
               <button className='text-gray text-2xl hover:shadow-lg hover:bg-gray-light rounded-full p-3' onClick={resetSearch}><MdOutlineCancel /></button>
@@ -156,8 +163,9 @@ function Filter({ setOpenFilter, openFilter }: Props) {
                   <h4 className='text-base mb-4'>Үнэ</h4>
                   <Slider
                     range
-                    // step={1000}
-                    defaultValue={[50000, 1000000]}
+                    max={1000000}
+                    defaultValue={[0, 1000000]}
+                    onAfterChange={(value:number[])=>setPriceRange(value)}
                   />
                 </div>
                 {/* amenities */}
@@ -201,7 +209,7 @@ function Filter({ setOpenFilter, openFilter }: Props) {
                 </div>
               </div>
               <div className='hidden md:block'>
-                {adult !== search.adult || children !== search.children || bedroom !== search.bedroom ? (
+                { isModified ? (
                   <div className='flex justify-end gap-3 items-center'>
                     <button className='font-medium hidden md:block' onClick={resetSearch}>
                       Болих
@@ -221,7 +229,7 @@ function Filter({ setOpenFilter, openFilter }: Props) {
             </div>
           </div>
           {
-            children !== search.children ? (
+            isModified ? (
               <div className='flex h-[79px] md:hidden z-[100] md:static justify-end fixed left-0 right-0 bottom-0 bg-white border-t border-gray-light md:pt-5'>
                 <button className='btn-primary flex-[1] md:flex-[0] md:py-2 py-3 px-4 my-4 mx-4 md:m-0 ' onClick={handleSearch}>
                   Хайх

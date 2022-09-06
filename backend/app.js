@@ -25,8 +25,6 @@ app.use(
   cookieSession({ name: "session", keys: ["lama"], maxAge: 24 * 60 * 60 * 100 })
 );
 app.use(express.static('public'))
-app.use(passport.initialize())
-app.use(passport.session())
 
 
 
