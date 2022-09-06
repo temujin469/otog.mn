@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './map.css'
@@ -16,19 +16,19 @@ type Props = {
 }
 
 const Mapbox = ({ hotels }: Props) => {
-  const [viewState, setViewState] = React.useState({
-    latitude: 47.9225,
-    longitude: 107.009,
-  });
-  const [clickedHotel, setClickedHotel] = useState<string | null>(null)
+  // const [viewState, setViewState] = React.useState({
+  //   latitude: 47.9225,
+  //   longitude: 107.009,
+  // });
+  // const [clickedHotel, setClickedHotel] = useState<string | null>(null)
 
-  const handleClick = (lat: number, long: number, hotelId: string) => {
-    // setViewState({
-    //   latitude: lat +0.1,
-    //   longitude: long,
-    // })
-    setClickedHotel(hotelId)
-  }
+  // const handleClick = (lat: number, long: number, hotelId: string) => {
+  //   // setViewState({
+  //   //   latitude: lat +0.1,
+  //   //   longitude: long,
+  //   // })
+  //   setClickedHotel(hotelId)
+  // }
 
   const Map = ReactMapboxGl({
     accessToken: process.env.REACT_APP_MAP_TOKEN as string
@@ -52,7 +52,7 @@ const Mapbox = ({ hotels }: Props) => {
         width: '100%'
       }}
       // onMouseOut={() => setClickedHotel(null)}
-      onDragStart={() => setClickedHotel(null)}
+      // onDragStart={() => setClickedHotel(null)}
     >
       {/* {
         hotels?.map(hotel => (
