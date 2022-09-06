@@ -8,22 +8,22 @@ import { GoogleMap as Map, useJsApiLoader,Marker } from '@react-google-maps/api'
 
 
 const GoogleMap = () => {
-  const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: "AIzaSyCmqnQoG2zZDackMKVsdQ_kM3LEWH2mrRQ"
-  })
+  // const { isLoaded } = useJsApiLoader({
+  //   googleMapsApiKey: "AIzaSyCmqnQoG2zZDackMKVsdQ_kM3LEWH2mrRQ"
+  // })
 
   const center = useMemo(() => ({ lat: 47.9225, lng: 107.009}), []);
   // latitude: 47.9225,
   //   longitude: 107.009,
 
   return (
-    isLoaded ? (
+    // isLoaded ? (
       <Map zoom={10} center={center} mapContainerClassName="map-container">
         <Marker position={center} />
       </Map>
-    ) : (
-      <></>
-    )
+    // ) : (
+    //   <></>
+    // )
     
   )
 };
