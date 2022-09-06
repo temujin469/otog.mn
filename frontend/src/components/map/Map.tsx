@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import Map, { Popup } from 'react-map-gl';
+import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './map.css'
-import PopupHotel from './PopupHotel';
-import classNames from 'classnames';
+// import PopupHotel from './PopupHotel';
+// import classNames from 'classnames';
 import { Hotel } from '../../typings';
-import NumberFormat from 'react-number-format';
+// import NumberFormat from 'react-number-format';
 
 
 
@@ -30,23 +30,31 @@ const Mapbox = ({ hotels }: Props) => {
     setClickedHotel(hotelId)
   }
 
+  const Map = ReactMapboxGl({
+    accessToken: process.env.REACT_APP_MAP_TOKEN as string
+  });
+
   return (
     <Map
-      {...viewState}
-      initialViewState={{
-        zoom: 9,
-      }}
-      onMove={evt => !clickedHotel && setViewState(evt.viewState)}
-      mapStyle="mapbox://styles/mapbox/streets-v10"
-      mapboxAccessToken={process.env.REACT_APP_MAP_TOKEN as string}
-      style={{
-        transition: "all",
-        transitionDuration: "500s"
+      // {...viewState}
+      // initialViewState={{
+      //   zoom: 9,
+      // }}
+      // onMove={evt => !clickedHotel && setViewState(evt.viewState)}
+      style="mapbox://styles/mapbox/streets-v10"
+      // mapboxAccessToken={process.env.REACT_APP_MAP_TOKEN as string}
+      // style={{
+      //   transition: "all",
+      //   transitionDuration: "500s"
+      // }}
+      containerStyle={{
+        height: '100%',
+        width: '100%'
       }}
       // onMouseOut={() => setClickedHotel(null)}
       onDragStart={() => setClickedHotel(null)}
     >
-      {
+      {/* {
         hotels?.map(hotel => (
           <div key={hotel.id}>
             <Popup
@@ -73,7 +81,10 @@ const Mapbox = ({ hotels }: Props) => {
             }
           </div>
         ))
-      }
+      } */}
+      <Layer type="symbol" id="marker" layout={{ 'icon-image': 'marker-15' }}>
+        <Feature coordinates={[-0.481747846041145, 51.3233379650232]} />
+      </Layer>
     </Map>
   );
 };
