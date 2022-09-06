@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { getHotels } from '../api/hotel'
 import Advertising from '../components/Advertising'
 import Hotels from '../components/hotels/Hotels'
+import GoogleMap from '../components/map/GoogleMap'
 import Mapbox from '../components/map/Map'
 import Filter from '../components/searcher/Filter'
 import SearchHeader from '../components/searchHeader'
@@ -87,7 +88,8 @@ function Search() {
                 </div>
                 <div className={classNames('col-span-5 hidden xl:block h-[calc(100vh-110px)]')}>
                   <div className='h-[60%]'>
-                    <Mapbox hotels={hotels as Hotel[]} />
+                    {/* <Mapbox hotels={hotels as Hotel[]} /> */}
+                    <GoogleMap/>
                   </div>
                   <div className='h-[40%]'>
                     <Advertising />

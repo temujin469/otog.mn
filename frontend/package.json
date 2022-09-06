@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@hookform/resolvers": "^2.9.7",
+    "@react-google-maps/api": "^2.12.2",
     "@reduxjs/toolkit": "^1.8.5",
     "@syncfusion/ej2-react-grids": "^20.2.45",
     "@syncfusion/ej2-react-popups": "^20.2.45",
@@ -19,6 +20,8 @@
     "axios": "^0.27.2",
     "date-fns": "^2.29.2",
     "firebase": "^9.9.3",
+    "google-map-react": "^2.2.0",
+    "google-maps-react": "^2.0.6",
     "js-cookie": "^3.0.1",
     "mapbox-gl": "^2.10.0",
     "moment": "^2.29.4",
@@ -68,6 +71,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.19.0",
     "@faker-js/faker": "^7.4.0",
+    "@types/google-map-react": "^2.1.7",
     "@types/js-cookie": "^3.0.2",
     "@types/node": "^18.7.14",
     "@types/react-date-range": "^1.4.4",
