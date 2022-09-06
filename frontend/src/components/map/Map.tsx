@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactMapboxGl, { Layer, Feature } from 'react-mapbox-gl';
+import ReactMapboxGl, { Layer, Marker} from 'react-mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './map.css'
 // import PopupHotel from './PopupHotel';
@@ -16,6 +16,10 @@ type Props = {
 }
 
 const Mapbox = ({ hotels }: Props) => {
+  // const [viewState, setViewState] = React.useState({
+  //   latitude: 47.9225,
+  //   longitude: 107.009,
+  // });
   // const [viewState, setViewState] = React.useState({
   //   latitude: 47.9225,
   //   longitude: 107.009,
@@ -83,7 +87,7 @@ const Mapbox = ({ hotels }: Props) => {
         ))
       } */}
       <Layer type="symbol" id="marker" layout={{ 'icon-image': 'marker-15' }}>
-        <Feature coordinates={[-0.481747846041145, 51.3233379650232]} />
+        <Marker coordinates={[-0.481747846041145, 51.3233379650232]} />
       </Layer>
     </Map>
   );
