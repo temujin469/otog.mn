@@ -1,14 +1,12 @@
-import React from 'react';
-import ReactMapboxGl, { Layer, Marker} from 'react-mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
+import React, { useState } from 'react';
+import Map, { Popup } from 'react-map-gl';
+import "mapbox-gl/dist/mapbox-gl.css";
+import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import './map.css'
-// import PopupHotel from './PopupHotel';
-// import classNames from 'classnames';
+import PopupHotel from './PopupHotel';
+import classNames from 'classnames';
 import { Hotel } from '../../typings';
-// import NumberFormat from 'react-number-format';
-
-
-
+import NumberFormat from 'react-number-format';
 
 
 type Props = {
@@ -16,49 +14,37 @@ type Props = {
 }
 
 const Mapbox = ({ hotels }: Props) => {
-  // const [viewState, setViewState] = React.useState({
-  //   latitude: 47.9225,
-  //   longitude: 107.009,
-  // });
-  // const [viewState, setViewState] = React.useState({
-  //   latitude: 47.9225,
-  //   longitude: 107.009,
-  // });
-  // const [clickedHotel, setClickedHotel] = useState<string | null>(null)
-
-  // const handleClick = (lat: number, long: number, hotelId: string) => {
-  //   // setViewState({
-  //   //   latitude: lat +0.1,
-  //   //   longitude: long,
-  //   // })
-  //   setClickedHotel(hotelId)
-  // }
-
-  const Map = ReactMapboxGl({
-    accessToken: process.env.REACT_APP_MAP_TOKEN as string
+  const [viewState, setViewState] = React.useState({
+    latitude: 47.9225,
+    longitude: 107.009,
   });
+  const [clickedHotel, setClickedHotel] = useState<string | null>(null)
+
+  const handleClick = (lat: number, long: number, hotelId: string) => {
+    // setViewState({
+    //   latitude: lat +0.1,
+    //   longitude: long,
+    // })
+    setClickedHotel(hotelId)
+  }
 
   return (
     <Map
-      // {...viewState}
-      // initialViewState={{
-      //   zoom: 9,
-      // }}
-      // onMove={evt => !clickedHotel && setViewState(evt.viewState)}
-      style="mapbox://styles/mapbox/streets-v10"
-      // mapboxAccessToken={process.env.REACT_APP_MAP_TOKEN as string}
-      // style={{
-      //   transition: "all",
-      //   transitionDuration: "500s"
-      // }}
-      containerStyle={{
-        height: '100%',
-        width: '100%'
+      {...viewState}
+      initialViewState={{
+        zoom: 9,
+      }}
+      onMove={evt => !clickedHotel && setViewState(evt.viewState)}
+      mapStyle="mapbox://styles/temujin469/cl7g1z4p2001114nyga575att"
+      mapboxAccessToken={process.env.REACT_APP_MAP_TOKEN as string}
+      style={{
+        transition: "all",
+        transitionDuration: "500s"
       }}
       // onMouseOut={() => setClickedHotel(null)}
-      // onDragStart={() => setClickedHotel(null)}
+      onDragStart={() => setClickedHotel(null)}
     >
-      {/* {
+      {
         hotels?.map(hotel => (
           <div key={hotel.id}>
             <Popup
@@ -85,10 +71,7 @@ const Mapbox = ({ hotels }: Props) => {
             }
           </div>
         ))
-      } */}
-      <Layer type="symbol" id="marker" layout={{ 'icon-image': 'marker-15' }}>
-        <Marker coordinates={[-0.481747846041145, 51.3233379650232]} />
-      </Layer>
+      }
     </Map>
   );
 };
