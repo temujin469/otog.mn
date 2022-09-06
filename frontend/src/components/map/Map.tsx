@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Map, { Popup } from 'react-map-gl';
+
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './map.css'
 import PopupHotel from './PopupHotel';
@@ -34,7 +35,7 @@ const Mapbox = ({ hotels }: Props) => {
         zoom: 9,
       }}
       onMove={evt => !clickedHotel && setViewState(evt.viewState)}
-      mapStyle="mapbox://styles/temujin469/cl7g1z4p2001114nyga575att"
+      mapStyle="mapbox://styles/mapbox/streets-v10"
       mapboxAccessToken={process.env.REACT_APP_MAP_TOKEN as string}
       style={{
         transition: "all",
