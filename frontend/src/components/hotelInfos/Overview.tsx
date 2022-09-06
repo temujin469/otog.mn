@@ -16,8 +16,15 @@ function Overview() {
       <div className='grid md:grid-cols-9 gap-5'>
         <div className='col-span-6 space-y-5'>
           <div>
-            <h2 className='heading-md mb-0'>UB City Hotel</h2>
-            <Rate defaultValue={4} disabled />
+            <div className='flex gap-5'>
+              <h2 className='heading-md mb-0'>UB City Hotel</h2>
+              <Rate defaultValue={3} disabled />
+            </div>
+            <div className='flex gap-5 items-center'>
+              <Rate defaultValue={4} disabled />
+              <p className='pt-1 text-gray'>20 сэтгэгдэл</p>
+
+            </div>
           </div>
           <div>
             <h3 className='heading-sm'>Тав тухтай байдал</h3>

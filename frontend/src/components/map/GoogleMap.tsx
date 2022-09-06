@@ -12,17 +12,29 @@ const GoogleMap = () => {
     googleMapsApiKey: "AIzaSyCmqnQoG2zZDackMKVsdQ_kM3LEWH2mrRQ"
   })
 
+  const [map, setMap] = React.useState(null)
+
+  const onLoad = React.useCallback(function callback(map:any) {
+    const bounds = new window.google.maps.LatLngBounds(center);
+    map.fitBounds(bounds);
+    setMap(map)
+  }, [])
+
+  const onUnmount = React.useCallback(function callback(map:any) {
+    setMap(null)
+  }, [])
+
   const center = useMemo(() => ({ lat: 47.9225, lng: 107.009}), []);
   // latitude: 47.9225,
   //   longitude: 107.009,
 
   return (
     isLoaded ? (
-      <Map zoom={10} center={center} mapContainerClassName="map-container">
+      <Map zoom={10} center={center} mapContainerClassName="map-container" onLoad={onLoad} onUnmount={onUnmount}>
         <Marker position={center} />
       </Map>
     ) : (
-      <></>
+      <>dfd</>
     )
     
   )
