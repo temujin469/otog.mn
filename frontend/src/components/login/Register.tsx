@@ -6,6 +6,7 @@ import { signup } from "../../api/user";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { handleShowLogin } from "../../redux/slices/appSlice";
 import { MdOutlineCancel } from "react-icons/md";
+import { signinWithFacebook, signinWithGoogle } from "../../utils/firebase";
 
 
 const schema = yup.object().shape({
@@ -16,7 +17,7 @@ const schema = yup.object().shape({
 
 
 type Props = {
-  setShow: Dispatch<SetStateAction<"register" | "login" | "google"|"facebook">>
+  setShow: Dispatch<SetStateAction<"register" | "login" | "google" | "facebook">>
 }
 
 function Register({ setShow }: Props) {
@@ -54,6 +55,7 @@ function Register({ setShow }: Props) {
                 className="bg-white text-gray-800 font-normal px-5 py-3 rounded-xl outline-none focus:outline-none mr-2 mb-1 uppercase shadow-md hover:shadow-xl hover:bg-gray-light inline-flex items-center text-xs"
                 type="button"
                 style={{ transition: "all .15s ease" }}
+                onClick={() => signinWithFacebook(dispatch)}
               >
                 <img
                   alt="..."
@@ -65,6 +67,7 @@ function Register({ setShow }: Props) {
               <button
                 className="bg-white active:bg-gray-100 text-gray-800 font-normal px-5 py-3 rounded-xl outline-none focus:outline-none mr-1 mb-1 uppercase shadow-md hover:bg-gray-light hover:shadow-xl inline-flex items-center text-xs"
                 type="button"
+                onClick={() => signinWithGoogle(dispatch)}
                 style={{ transition: "all .15s ease" }}
               >
                 <img

@@ -3,7 +3,7 @@ import { BsPerson } from 'react-icons/bs'
 import { MdDateRange } from 'react-icons/md'
 import { VscArrowBoth } from 'react-icons/vsc'
 import { format } from "date-fns";
-import { useAppDispatch, useAppSelector } from '../../hooks'
+import { useAppSelector } from '../../hooks'
 import Option from './Option'
 import DatePicker from './DatePicker';
 
@@ -13,7 +13,7 @@ function RoomSearcher() {
   const [openDate, setOpenDate] = useState(false);
   const [openOptions, setOpenOptions] = useState<boolean>(false);
 
-  const dispatch = useAppDispatch()
+  // const dispatch = useAppDispatch()
 
 
   const handleOpen = (id: "date" | "option") => {

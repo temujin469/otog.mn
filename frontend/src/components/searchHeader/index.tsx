@@ -107,7 +107,7 @@ function SearchHeader({ fixed, withFilterRow }: any) {
           <div className='border-gray md:border-r py-2 md:py-0 flex justify-between items-center md:h-full'>
             <div className='md:px-5'>
               <Link to='/'>
-                <img src="/logo/otog-logo-black.png" className="md:h-[40px] h-[25px] object-contain" alt="Flowbite Logo" />
+                <img src="/logo/Otog logo v3.png" className="md:h-[40px] h-[25px] object-contain" alt="Flowbite Logo" />
               </Link>
             </div>
             <button onClick={handleShow} className="sm:hidden text-primary p-2 rounded-md hover:bg-black/10">
