@@ -7,6 +7,8 @@ import { IoMdContacts } from 'react-icons/io';
 import { RiContactsLine, RiStockLine } from 'react-icons/ri';
 import { MdOutlineSupervisorAccount } from 'react-icons/md';
 import { HiOutlineRefresh } from 'react-icons/hi';
+import { FcBarChart, FcConferenceCall, FcInspection, FcShop } from 'react-icons/fc';
+
 import { TiTick } from 'react-icons/ti';
 import { GiLouvrePyramid } from 'react-icons/gi';
 import { GrLocation } from 'react-icons/gr';
@@ -471,11 +473,27 @@ export const employeesGrid = [
 
 export const links = [
   {
-    title: 'Dashboard',
+    title: 'Хянах самбар',
     links: [
       {
-        name: 'ecommerce',
-        icon: <FiShoppingBag />,
+        name: 'Хураангуй',
+        path: 'Хураангуй',
+        icon: <FcBarChart />,
+      },
+      {
+        name: 'Байр сууц',
+        path: 'Байр-сууц',
+        icon: <FcShop />,
+      },
+      {
+        name: 'Захиалга',
+        path: 'Захиалга',
+        icon: <FcInspection />,
+      },
+      {
+        name: 'Хэрэглэгч',
+        path: 'Хэрэглэгч',
+        icon: <FcConferenceCall />,
       },
     ],
   },
@@ -821,28 +839,28 @@ export const medicalproBranding = {
 
 export const themeColors = [
   {
-    name: 'blue-theme',
-    color: '#1A97F5',
+    name: 'Өнгө 1',
+    color: '#ff7849',
   },
   {
-    name: 'green-theme',
+    name: 'Өнгө 2',
     color: '#03C9D7',
   },
   {
-    name: 'purple-theme',
+    name: 'Өнгө 3',
     color: '#7352FF',
   },
   {
-    name: 'red-theme',
+    name: 'Өнгө 4',
     color: '#FF5C8E',
   },
   {
-    name: 'indigo-theme',
+    name: 'Өнгө 5',
     color: '#1E4DB7',
   },
   {
     color: '#FB9678',
-    name: 'orange-theme',
+    name: 'Өнгө 6',
   },
 ];
 

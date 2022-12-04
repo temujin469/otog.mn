@@ -7,7 +7,6 @@ import { getHotels } from '../api/hotel'
 import Advertising from '../components/Advertising'
 import Hotels from '../components/hotels/Hotels'
 import GoogleMap from '../components/map/GoogleMap'
-import Mapbox from '../components/map/Map'
 import Filter from '../components/searcher/Filter'
 import SearchHeader from '../components/searchHeader'
 // import { amenities } from '../data/data'
@@ -75,7 +74,7 @@ function Search() {
                 </button>
               </div>
             </div>
-            <Mapbox hotels={hotels as Hotel[]} />
+            {/* <Mapbox hotels={hotels as Hotel[]} /> */}
             {/* <GoogleMap /> */}
             <Filter openFilter={openFilter} setOpenFilter={setOpenFilter} />
           </div>

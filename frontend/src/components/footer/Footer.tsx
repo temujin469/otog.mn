@@ -158,13 +158,10 @@ function Footer() {
       </div>
 
       <div className="text-center bg-primary text-gray-dark/40 py-5">
-        <div className='container flex justify-between items-center'>
+        <div className='container flex justify-center'>
           <p className=' text-white'>
             © 2022 Отог Платформ
           </p>
-          <div>
-            <img src='https://www.tridum.mn/templates/images/develop.png' className='w-[77px]' alt="logo"/>
-          </div>
         </div>
       </div>
     </footer>
